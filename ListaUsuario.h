@@ -74,7 +74,7 @@ void ListaUsuario<T>::guardar() {
 template<class T>
 void ListaUsuario<T>::abrir() {
 	ifstream archivo;
-	string linea, a, b;
+	string linea, a = '', b = '';
 	string delimit = ',';
 
 	archivo.open("usuarios.txt", ios::in);
@@ -86,7 +86,13 @@ void ListaUsuario<T>::abrir() {
 
 	while (!archivo.eof()) {
 		while (getline(archivo, linea, delimit)) {
-			
+			if (a == '') a = linea;
+			b = linea;
+			if (a != '' && b != '') {
+				insertar(new Usuario(a, b));
+				a = '';
+				b = '';
+			}
 		}
 	}
 }

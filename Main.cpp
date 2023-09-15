@@ -34,6 +34,7 @@ int main() {
 				case 2:
 					break;
 				case 3:
+					uLista.guardar();
 					main();
 					break;
 				}
@@ -62,6 +63,7 @@ int main() {
 				case 2:
 					break;
 				case 3:
+					uLista.guardar();
 					main();
 					break;
 				}
@@ -70,6 +72,6 @@ int main() {
 		}
 		system(cls);
 	}
-
+	uLista.guardar();
 	return 0;
 }

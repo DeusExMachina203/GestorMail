@@ -13,8 +13,8 @@ void logo() {
 	cout << "											     ▀" << endl;
 	cout << "-----------------------------------------------------------" << endl;
 	cout << "						Bienvenido!!" << endl;
-	cout << "Seleccione una opción: " << endl;
-	cout << "1. Iniciar Sesión" << endl;
+	cout << "Seleccione una opcion: " << endl;
+	cout << "1. Iniciar Sesion" << endl;
 	cout << "2. Crear una cuenta" << endl;
 }
 
