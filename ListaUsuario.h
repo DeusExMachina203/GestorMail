@@ -55,7 +55,7 @@ void ListaUsuario<T>::guardar() {
 	Nodo<T>* aux = inicio;
 	ofstream archivo;
 
-	archivo.open("usuarios.txt", ios::trunc);
+	archivo.open("usuarios.cvs", ios::trunc);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";
@@ -74,26 +74,24 @@ void ListaUsuario<T>::guardar() {
 template<class T>
 void ListaUsuario<T>::abrir() {
 	ifstream archivo;
-	string linea, a = '', b = '';
+	string linea;
 	string delimit = ',';
 
-	archivo.open("usuarios.txt", ios::in);
+	archivo.open("usuarios.cvs", ios::in);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";
 		exit(1);
 	}
 
-	while (!archivo.eof()) {
-		while (getline(archivo, linea, delimit)) {
-			if (a == '') a = linea;
-			b = linea;
-			if (a != '' && b != '') {
-				insertar(new Usuario(a, b));
-				a = '';
-				b = '';
-			}
-		}
+	while (getline(archivo, linea)) {
+		stringstream ss(linea);
+		string a, b;
+
+		getline(ss, a, delimit);
+		getline(ss, b, delimit);
+
+		insertar(Usuario(a, b));
 	}
 	archivo.close();
 }
