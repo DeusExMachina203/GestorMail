@@ -8,7 +8,7 @@ private:
 public:
 	ListaUsuario() { inicio = NULL; }
 	~ListaUsuario();
-	void insertarInicio(T v);
+	void insertar(T v);
 	bool busqueda(T v);
 };
 
