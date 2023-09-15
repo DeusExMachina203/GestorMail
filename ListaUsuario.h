@@ -95,4 +95,5 @@ void ListaUsuario<T>::abrir() {
 			}
 		}
 	}
+	archivo.close();
 }
