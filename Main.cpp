@@ -1,18 +1,19 @@
 #include<iostream>
 #include"Menu.h"
 #include"ListaUsuario.h"
-using namespace System;
+#include<cstdlib>
 using namespace std;
 
 int main() {
 	ListaUsuario<Usuario*> uLista;
+	uLista.abrir();
 	while (1) {
 		int op1;
 		logo();
 		cin >> op1;
 		if (op1 == 1) {
 			do {
-				Console::Clear();
+				system(cls);
 				string usu, pass;
 
 				cout << "Recuerde no dejar ningun espacio!" << endl;
@@ -22,7 +23,22 @@ int main() {
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
 
 			} while (uLista.busqueda(usu, pass) == false);
-			menuPrincipal();
+			
+			int op2;
+			do {
+				menuPrincipal();
+				cout << "Ingresar opción: "; cin >> op2;
+				switch (op2) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					main();
+					break;
+				}
+				system(cls);
+			} while (op < 1 || op>3);
 		}
 		else if (op1 == 2) {
 			string usu, pass, passV;
@@ -35,9 +51,24 @@ int main() {
 			if (pass == passV && uLista.busqueda(usu, pass) == false) {
 				uLista.insertar(new Usuario(usu, pass));
 			}
-			menuPrincipal();
+
+			int op2;
+			do {
+				menuPrincipal();
+				cout << "Ingresar opción: "; cin >> op2;
+				switch (op2) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					main();
+					break;
+				}
+				system(cls);
+			} while (op < 1 || op>3);
 		}
-		Console::Clear();
+		system(cls);
 	}
 
 	return 0;
