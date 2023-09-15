@@ -1,5 +1,7 @@
 #include"Nodo.h"
 #include"Usuario.h"
+#include<fstream>
+using namespace std;
 
 template<class T>
 class ListaUsuario {
@@ -10,6 +12,8 @@ public:
 	~ListaUsuario();
 	void insertar(T v);
 	bool busqueda(T v);
+	void guardar();
+	void abrir();
 };
 
 template<class T>
@@ -44,4 +48,45 @@ bool ListaUsuario<T>::busqueda(T v) {
 		aux = aux->siguiente;
 	}
 	return existe;
+}
+
+template<class T>
+void ListaUsuario<T>::guardar() {
+	Nodo<T>* aux = inicio;
+	ofstream archivo;
+
+	archivo.open("usuarios.txt", ios::trunc);
+
+	if (archivo.fail()) {
+		cout << "\nNo se pudo abrir el archivo";
+		exit(1);
+	}
+
+	while (aux != NULL) {
+		Usuario* us = (Usuario*)(aux->valor);
+		archivo << us->toString() << endl;
+		aux = aux->siguiente;
+	}
+
+	archivo.close();
+}
+
+template<class T>
+void ListaUsuario<T>::abrir() {
+	ifstream archivo;
+	string linea, a, b;
+	string delimit = ',';
+
+	archivo.open("usuarios.txt", ios::in);
+
+	if (archivo.fail()) {
+		cout << "\nNo se pudo abrir el archivo";
+		exit(1);
+	}
+
+	while (!archivo.eof()) {
+		while (getline(archivo, linea, delimit)) {
+			
+		}
+	}
 }
