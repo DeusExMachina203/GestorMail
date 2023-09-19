@@ -60,7 +60,7 @@ template<class T>
 void ListaEnviados<T>::abrir(string v) {
 	ifstream archivo;
 	string linea;
-	string delimit = '&';
+	char delimit = '&';
 
 	archivo.open(v.c_str(), ios::in);
 
@@ -77,7 +77,8 @@ void ListaEnviados<T>::abrir(string v) {
 		getline(ss, b, delimit);
 		getline(ss, c, delimit);
 
-		push(Mail*(a, b, c));
+
+		push(new Mail(a, b, c));
 	}
 	archivo.close();
 }

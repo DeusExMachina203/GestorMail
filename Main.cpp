@@ -61,8 +61,7 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			break;
 		case 4:
 			uLista.guardar();
-			main();
-			break;
+			return;
 		}
 	}
 }

@@ -1,4 +1,3 @@
-
 using namespace std;
 
 template<class T>
@@ -73,7 +72,7 @@ template<class T>
 void ListaUsuario<T>::abrir() {
 	ifstream archivo;
 	string linea;
-	string delimit = ',';
+	char delimit = ',';
 
 	archivo.open("usuarios.cvs", ios::in);
 
@@ -90,7 +89,7 @@ void ListaUsuario<T>::abrir() {
 		getline(ss, b, delimit);
 		getline(ss, c, delimit);
 
-		insertar(Usuario(a, b, c);
+		insertar(new Usuario(a, b, c));
 	}
 	archivo.close();
 }
