@@ -1,16 +1,13 @@
-#include<string>
-#include<sstream>
-#include<iostream>
 using namespace std;
 
 class Usuario {
 	string usu, contra, id;
 public:
-	Usuario(string usu = '', string contra = '', string id = '') : usu(usu), contra(contra), id(id) {}
+	Usuario(string usu = "", string contra = "", string id = "") : usu(usu), contra(contra), id(id) {}
 	string toString() {
 		ostringstream ss;
 		ss << usu;
-		ss<< ","
+		ss<< ",";
 		ss << contra;
 		ss << ",";
 		ss << id;

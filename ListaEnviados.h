@@ -7,7 +7,7 @@ class ListaEnviados {
 private:
 	Nodo<T>* tope;
 public:
-	Listaenviados() { tope = NULL; }
+	ListaEnviados() { tope = NULL; }
 	void push(T v);
 	T pop();
 	bool estaVacia();

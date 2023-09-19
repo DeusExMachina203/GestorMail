@@ -1,22 +1,19 @@
-#include<iostream>
-#include"Menu.h"
-#include"ListaEnviados.h"
-#include"ListaUsuario.h"
-#include"ListaRecibidos.h"
-#include<cstdlib>
+#include "Clases.h"
+
 using namespace std;
 
 void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>* mrLista, ListaEnviados<Mail*>* meLista) {
 	int op2;
 	while (1) {
 		do {
-			system(cls);
+			system("cls");
 			menuPrincipal();
 			cout << "Ingresar opcion: "; cin >> op2;
-		} while (op < 1 || op>4);
+		} while (op2 < 1 || op2>4);
+		string asunto, texto;
 		switch (op2) {
 		case 1:
-			system(cls);
+			system("cls");
 			Mail* elem1;
 			int o1;
 			for (int i = 0; i < 5; i++) {
@@ -33,8 +30,7 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			}
 			break;
 		case 2:
-			system(cls);
-			string asunto, texto;
+			system("cls");
 			cout << "\nIngrese el asunto del correo que desea enviar:" << endl;
 			cin >> asunto;
 			cout << "\nIngrese el texto del correo que desea enviar: " << endl;
@@ -42,7 +38,7 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			meLista->push(new Mail(asunto, texto, usu));
 			break;
 		case 3:
-			system(cls);
+			system("cls");
 			Mail* elem2;
 			int o2;
 			for (int i = 0; i < 5; i++) {
@@ -77,37 +73,39 @@ int main() {
 		cin >> op1;
 		if (op1 == 1) {
 			string usu, pass;
-			string idprovisional = '102430';
+			string idprovisional = "102430";
+			Usuario* us;
 			do {
-				system(cls);
+				system("cls");
 
 				cout << "Recuerde no dejar ningun espacio!" << endl;
 				cout << "Si desea regresar ingrese 1 en el apartado usuario." << endl;
 				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
-				if (usu == '1') main();
+				if (usu == "1") main();
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
+				us= new Usuario(usu, pass, idprovisional);
 
-			} while (uLista.busqueda(Usuario*(usu, pass, idprovisional)) == false);
+			} while (!uLista.busqueda(us));
 			
 			principal(usu, uLista, mrLista, meLista);
 		}
 		else if (op1 == 2) {
-			system(cls);
+			system("cls");
 			string usu, pass, passV;
-			string idprovisional = '102431';
+			string idprovisional = "102431";
 
 			cout << "Recuerde que los espacios tambien se consideran!" << endl;
 			cout << "Ingrese un usuario: "; cin >> usu; cout << endl; 
 			cout << "Ingrese una contrasena: "; cin >> pass; cout << endl;
 			cout << "Verifique su contrasena: "; cin >> passV; cout << endl;
-
-			if (pass == passV && uLista.busqueda(usu, pass) == false) {
-				uLista.insertar(new Usuario(usu, pass, idprovisional));
+			Usuario* us = new Usuario(usu, pass, idprovisional);
+			if (pass == passV && !uLista.busqueda(us)) {
+				uLista.insertar(us);
 			}
 
 			principal(usu, uLista, mrLista, meLista);
 		}
-		system(cls);
+		system("cls");
 		uLista.guardar();
 	}
 	return 0;
