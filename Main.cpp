@@ -33,7 +33,6 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 		case 2:
 			
 			meLista->abrir(usX->idArchivoEnviado());
-			string asunto, texto;
 			system("cls");
 			cout << "\nIngrese el asunto del correo que desea enviar:" << endl;
 			cin >> asunto;
@@ -91,9 +90,9 @@ int main() {
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
 				us= new Usuario(usu, pass, idprovisional);
 
-			} while (uLista.busqueda(Usuario*(usu, pass, idprovisional)) == false);
+			} while (uLista.busqueda(us) == false);
 			
-			principal(usu, uLista, mrLista, meLista);
+			principal(usu, uLista, mrLista, meLista, us);
 		}
 		else if (op1 == 2) {
 			system("cls");
@@ -109,7 +108,7 @@ int main() {
 				uLista.insertar(us);
 			}
 
-			principal(usu, uLista, mrLista, meLista);
+			principal(usu, uLista, mrLista, meLista, us);
 		}
 		system("cls");
 		uLista.guardar();
