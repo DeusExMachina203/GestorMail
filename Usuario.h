@@ -10,11 +10,27 @@ public:
 	string toString() {
 		ostringstream ss;
 		ss << usu;
-		ss<< ","
+		ss << ",";
 		ss << contra;
 		ss << ",";
 		ss << id;
 		return (ss.str());
 	}
+
 	string getID() { return this->id; }
+
+	string idArchivoEnviado() {
+		ostringstream ss;
+		ss << "//MailsEnviados//";
+		ss << id;
+		ss << ".cvs";
+		return (ss.str());
+	}
+	string idArchivoRecibido() {
+		ostringstream ss;
+		ss << "//MailsRecibidos//";
+		ss << id;
+		ss << ".cvs";
+		return (ss.str());
+	}
 };

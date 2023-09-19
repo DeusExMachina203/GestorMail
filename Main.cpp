@@ -6,7 +6,7 @@
 #include<cstdlib>
 using namespace std;
 
-void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>* mrLista, ListaEnviados<Mail*>* meLista) {
+void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>* mrLista, ListaEnviados<Mail*>* meLista, Usuario* usX) {
 	int op2;
 	while (1) {
 		do {
@@ -19,6 +19,7 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			system(cls);
 			Mail* elem1;
 			int o1;
+			mrLista->abrir(usX->idArchivoRecibido());
 			for (int i = 0; i < 5; i++) {
 				elem1 = mrLista->pop();
 				if (elem1 != NULL) cout << elem1->printMail() << endl;
@@ -34,17 +35,20 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			break;
 		case 2:
 			system(cls);
+			meLista->abrir(usX->idArchivoEnviado());
 			string asunto, texto;
 			cout << "\nIngrese el asunto del correo que desea enviar:" << endl;
 			cin >> asunto;
 			cout << "\nIngrese el texto del correo que desea enviar: " << endl;
 			cin >> texto;
 			meLista->push(new Mail(asunto, texto, usu));
+			meLista->guardar(usX->idArchivoEnviado());
 			break;
 		case 3:
 			system(cls);
 			Mail* elem2;
 			int o2;
+			meLista->abrir(usX->idArchivoEnviado());
 			for (int i = 0; i < 5; i++) {
 				elem2 = meLista->pop();
 				if (elem2 != NULL) cout << elem2->printMail() << endl;
@@ -88,8 +92,8 @@ int main() {
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
 
 			} while (uLista.busqueda(Usuario*(usu, pass, idprovisional)) == false);
-			
-			principal(usu, uLista, mrLista, meLista);
+			Usuario* usX = new Usuario(usu, pass, idprovisional);
+			principal(usu, uLista, mrLista, meLista, usX);
 		}
 		else if (op1 == 2) {
 			system(cls);
