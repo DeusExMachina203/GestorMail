@@ -1,6 +1,4 @@
-#include"Nodo.h"
-#include"Mail.h"
-#include<fstream>
+
 using namespace std;
 
 template<class T>
