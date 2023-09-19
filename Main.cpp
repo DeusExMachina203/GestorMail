@@ -1,13 +1,15 @@
 #include<iostream>
 #include"Menu.h"
 #include"ListaUsuario.h"
+#include"ListaMails.h"
 #include<cstdlib>
 using namespace std;
 
 int main() {
-	ListaUsuario<Usuario*> uLista;
-	uLista.abrir();
 	while (1) {
+		ListaUsuario<Usuario*> uLista;
+		uLista.abrir();
+		ListaMails<Mails*> mLista;
 		int op1;
 		logo();
 		cin >> op1;
@@ -27,7 +29,7 @@ int main() {
 			int op2;
 			do {
 				menuPrincipal();
-				cout << "Ingresar opción: "; cin >> op2;
+				cout << "Ingresar opcion: "; cin >> op2;
 				switch (op2) {
 				case 1:
 					break;
@@ -42,7 +44,9 @@ int main() {
 			} while (op < 1 || op>3);
 		}
 		else if (op1 == 2) {
+			system(cls);
 			string usu, pass, passV;
+			string idprovisional = '102431';
 
 			cout << "Recuerde que los espacios tambien se consideran!" << endl;
 			cout << "Ingrese un usuario: "; cin >> usu; cout << endl; 
@@ -50,7 +54,7 @@ int main() {
 			cout << "Verifique su contrasena: "; cin >> passV; cout << endl;
 
 			if (pass == passV && uLista.busqueda(usu, pass) == false) {
-				uLista.insertar(new Usuario(usu, pass));
+				uLista.insertar(new Usuario(usu, pass, idprovisional));
 			}
 
 			int op2;

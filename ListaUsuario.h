@@ -86,12 +86,13 @@ void ListaUsuario<T>::abrir() {
 
 	while (getline(archivo, linea)) {
 		stringstream ss(linea);
-		string a, b;
+		string a, b, c;
 
 		getline(ss, a, delimit);
 		getline(ss, b, delimit);
+		getline(ss, c, delimit);
 
-		insertar(Usuario(a, b));
+		insertar(Usuario(a, b, c);
 	}
 	archivo.close();
 }
