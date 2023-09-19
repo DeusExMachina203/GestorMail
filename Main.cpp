@@ -21,14 +21,14 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			int o1;
 			for (int i = 0; i < 5; i++) {
 				elem1 = mrLista->pop();
-				if (elem1 != NULL) cout << elem1->toString << endl;
+				if (elem1 != NULL) cout << elem1->printMail() << endl;
 			}
 			cout << "\nSi desea imprimir todos los correos presione 1, si quiere regresar presione cualquier tecla";
 			cin >> o1;
 			if (o1 == 1) {
 				do {
 					elem1 = mrLista->pop();
-					if (elem1 != NULL) cout << elem1->toString() << endl;
+					if (elem1 != NULL) cout << elem1->printMail() << endl;
 				} while (elem1 != NULL);
 			}
 			break;
@@ -47,14 +47,14 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			int o2;
 			for (int i = 0; i < 5; i++) {
 				elem2 = meLista->pop();
-				if (elem2 != NULL) cout << elem2->toString << endl;
+				if (elem2 != NULL) cout << elem2->printMail() << endl;
 			}
 			cout << "\nSi desea imprimir todos los correos presione 1, si quiere regresar presione cualquier tecla";
 			cin >> o2;
 			if (o2 == 1) {
 				do {
 					elem2 = meLista->pop();
-					if (elem2 != NULL) cout << elem2->toString() << endl;
+					if (elem2 != NULL) cout << elem2->printMail() << endl;
 				} while (elem2 != NULL);
 			}
 			break;
@@ -77,6 +77,7 @@ int main() {
 		cin >> op1;
 		if (op1 == 1) {
 			string usu, pass;
+			string idprovisional = '102430';
 			do {
 				system(cls);
 
@@ -86,7 +87,7 @@ int main() {
 				if (usu == '1') main();
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
 
-			} while (uLista.busqueda(usu, pass) == false);
+			} while (uLista.busqueda(Usuario*(usu, pass, idprovisional)) == false);
 			
 			principal(usu, uLista, mrLista, meLista);
 		}

@@ -16,4 +16,14 @@ public:
 		ss << emisor;
 		return (ss.str());
 	}
+	string printMail() {
+		ostringstream ss;
+		ss << "\nEnviado por: ";
+		ss << emisor;
+		ss << "\nAsunto: ";
+		ss << asunto;
+		ss << "\n";
+		ss << texto;
+		return (ss.str());
+	}
 };

@@ -16,4 +16,5 @@ public:
 		ss << id;
 		return (ss.str());
 	}
+	string getID() { return this->id; }
 };
