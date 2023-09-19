@@ -22,5 +22,6 @@ void menuPrincipal() {
 	cout << "Elija una de las sguientes opciones:" << endl;
 	cout << "1. Revisar Correos" << endl;
 	cout << "2. Enviar un Correo" << endl;
-	cout << "3. Cerrar Sesion" << endl;
+	cout << "3. Ver Correos Enviados" << endl;
+	cout << "4. Cerrar Sesion" << endl;
 }

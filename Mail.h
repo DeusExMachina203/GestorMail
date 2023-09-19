@@ -1,11 +1,12 @@
 #include<string>
 #include<sstream>
+#include<iostream>
 using namespace std;
 
-class Mails {
+class Mail {
 	string asunto, texto, emisor;
 public:
-	Mails(string asunto = '', string texto = '', string emisor = '') :asunto(asunto), texto(texto), emsior(emisor) {}
+	Mail(string asunto = '', string texto = '', string emisor = '') :asunto(asunto), texto(texto), emsior(emisor) {}
 	string toString() {
 		ostringstream ss;
 		ss << asunto;
