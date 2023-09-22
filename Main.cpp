@@ -58,10 +58,12 @@ void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>
 			Mail* elem2;
 			int o2;
 			meLista->abrir(usX->idArchivoEnviado());
-			for (int i = 0; i < 5; i++) {
-				elem2 = meLista->pop();
-				if (elem2 != NULL) cout << elem2->printMail() << endl;
-			}
+			
+			elem2 = meLista->pop();
+			if (elem2 != NULL) {
+				cout << elem2->printMail() << endl;
+				}
+			
 			cout << "\nSi desea imprimir todos los correos presione 1, si quiere regresar presione cualquier tecla";
 			cin >> o2;
 			if (o2 == 1) {

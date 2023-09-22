@@ -3,7 +3,7 @@ using namespace std;
 class Mail {
 	string asunto, texto, emisor, remitente;
 public:
-	Mail(string asunto = "", string texto = "", string emisor = "", string remitente = "") :asunto(asunto), texto(texto), emisor(emisor), remitente() {}
+	Mail(string asunto = "", string texto = "", string emisor = "", string remitente = "") :asunto(asunto), texto(texto), emisor(emisor), remitente(remitente) {}
 	string toString() {
 		ostringstream ss;
 		ss << asunto;
@@ -19,6 +19,8 @@ public:
 		ostringstream ss;
 		ss << "\nEnviado por: ";
 		ss << emisor;
+		ss << "\nPara: ";
+		ss << remitente;
 		ss << "\nAsunto: ";
 		ss << asunto;
 		ss << "\n";

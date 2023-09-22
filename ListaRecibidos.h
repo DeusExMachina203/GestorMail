@@ -62,7 +62,7 @@ void ListaRecibidos<T>::abrir(string v) {
 	string linea;
 	char delimit = '&';
 
-	archivo.open(v.c_str(), ios::in);
+	archivo.open(v, ios::in);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";
@@ -71,13 +71,14 @@ void ListaRecibidos<T>::abrir(string v) {
 
 	while (getline(archivo, linea)) {
 		stringstream ss(linea);
-		string a, b, c;
+		string asunto, texto, emisor, remitente;
 
-		getline(ss, a, delimit);
-		getline(ss, b, delimit);
-		getline(ss, c, delimit);
+		getline(ss, asunto, delimit);
+		getline(ss, texto, delimit);
+		getline(ss, emisor, delimit);
+		getline(ss, remitente, delimit);
 
-		push(new Mail(a, b, c));
+		push(new Mail(asunto, texto, emisor, remitente));
 	}
 	archivo.close();
 }

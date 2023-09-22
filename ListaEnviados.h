@@ -17,9 +17,7 @@ public:
 template<class T>
 void ListaEnviados<T>::push(T v) {
 	if (estaVacia()) {
-		cout << "tope" << endl;
 		tope = new Nodo<T>(v);
-		
 	}
 	else tope = new Nodo<T>(v, tope);
 }
@@ -36,8 +34,7 @@ T ListaEnviados<T>::pop() {
 
 template<class T>
 bool ListaEnviados<T>::estaVacia() {
-	cout<< "funcionesvacia" << endl;
-	if(tope) return true;
+	if(tope == nullptr) return true;
 	else return false;
 }
 
@@ -67,7 +64,6 @@ void ListaEnviados<T>::abrir(string v) {
 	ifstream archivo;
 	string linea;
 	char delimit = '&';
-	cout<< endl << v << endl;
 	archivo.open(v, ios::in);
 
 	if (archivo.fail()) {
@@ -77,14 +73,14 @@ void ListaEnviados<T>::abrir(string v) {
 
 	while (getline(archivo, linea)) {
 		stringstream ss(linea);
-		string a, b, c;
+		string asunto, texto, emisor, remitente;
+		
+		getline(ss, asunto, delimit);
+		getline(ss, texto, delimit);
+		getline(ss, emisor, delimit);
+		getline(ss, remitente, delimit);
 
-		getline(ss, a, delimit);
-		getline(ss, b, delimit);
-		getline(ss, c, delimit);
-
-
-		push(new Mail(a, b, c));
+		push(new Mail(asunto, texto, emisor, remitente));
 	}
 	archivo.close();
 }

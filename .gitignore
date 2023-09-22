@@ -4,5 +4,5 @@
 
 /.vs
 usuarios.csv
-/MailsEnviados/*
-/MailsRecibidos/*
+/MailsEnviados/
+/MailsRecibidos/
