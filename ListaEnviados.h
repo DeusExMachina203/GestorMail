@@ -6,7 +6,7 @@ class ListaEnviados {
 private:
 	Nodo<T>* tope;
 public:
-	ListaEnviados() { tope = NULL; }
+	ListaEnviados(): tope(nullptr) { }
 	void push(T v);
 	T pop();
 	bool estaVacia();
@@ -16,7 +16,11 @@ public:
 
 template<class T>
 void ListaEnviados<T>::push(T v) {
-	if (estaVacia()) tope = new Nodo<T>(v);
+	if (estaVacia()) {
+		cout << "tope" << endl;
+		tope = new Nodo<T>(v);
+		
+	}
 	else tope = new Nodo<T>(v, tope);
 }
 
@@ -32,7 +36,9 @@ T ListaEnviados<T>::pop() {
 
 template<class T>
 bool ListaEnviados<T>::estaVacia() {
-	return (tope == NULL);
+	cout<< "funcionesvacia" << endl;
+	if(tope) return true;
+	else return false;
 }
 
 template<class T>
@@ -40,7 +46,7 @@ void ListaEnviados<T>::guardar(string v) {
 	Nodo<T>* aux = tope;
 	ofstream archivo;
 
-	archivo.open(v.c_str(), ios::trunc);
+	archivo.open(v, ios::trunc);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";
@@ -61,8 +67,8 @@ void ListaEnviados<T>::abrir(string v) {
 	ifstream archivo;
 	string linea;
 	char delimit = '&';
-
-	archivo.open(v.c_str(), ios::in);
+	cout<< endl << v << endl;
+	archivo.open(v, ios::in);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";

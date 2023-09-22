@@ -28,14 +28,14 @@ public:
 		ostringstream ss;
 		ss << "./MailsEnviados/";
 		ss << id;
-		ss << ".cvs";
+		ss << ".csv";
 		return (ss.str());
 	}
 	string idArchivoRecibido() {
 		ostringstream ss;
 		ss << "./MailsRecibidos/";
 		ss << id;
-		ss << ".cvs";
+		ss << ".csv";
 		return (ss.str());
 	}
 };

@@ -9,7 +9,7 @@ public:
 	~ListaUsuario();
 	string generarId();
 	void insertar(T v);
-	bool busqueda(T v);
+	bool busqueda(T &v);
 	void guardar();
 	void abrir();
 };
@@ -50,13 +50,13 @@ void ListaUsuario<T>::insertar(T v) {
 }
 
 template<class T>
-bool ListaUsuario<T>::busqueda(T v) {
+bool ListaUsuario<T>::busqueda(T &v) {
 	Nodo<T>* aux = inicio;
 	bool existe = false;
-
 	while (aux != NULL) {
 		if (aux->valor->getUsu() == v->getUsu() && aux->valor->getContra() == v->getContra()) { 
 			existe = true;
+			v->setID(aux->valor->getID());
 			return existe;
 		}
 		aux = aux->siguiente;

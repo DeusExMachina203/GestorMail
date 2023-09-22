@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>* mrLista, ListaEnviados<Mail*>* meLista, Usuario* usX) {
+void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>* &mrLista, ListaEnviados<Mail*>* &meLista, Usuario* &usX) {
 	int op2;
 	while (1) {
 		do {
@@ -38,7 +38,9 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			cin >> asunto;
 			cout << "\nIngrese el texto del correo que desea enviar: " << endl;
 			cin >> texto;
+			cout<< "enviando...";
 			meLista->push(new Mail(asunto, texto, usu));
+			cout << "\nCorreo enviado exitosamente!" << endl;
 			meLista->guardar(usX->idArchivoEnviado());
 			break;
 		case 3:
@@ -71,8 +73,8 @@ int main() {
 		cin.clear();
 		ListaUsuario<Usuario*> uLista;
 		uLista.abrir();
-		ListaRecibidos<Mail*>* mrLista;
-		ListaEnviados<Mail*>* meLista;
+		ListaRecibidos<Mail*>* mrLista = new ListaRecibidos<Mail*>();
+		ListaEnviados<Mail*>* meLista = new ListaEnviados<Mail*>();
 		int op1;
 		logo();
 		cin >> op1;
