@@ -7,6 +7,7 @@ private:
 public:
 	ListaUsuario() { inicio = NULL; }
 	~ListaUsuario();
+	string generarId();
 	void insertar(T v);
 	bool busqueda(T v);
 	void guardar();
@@ -24,6 +25,17 @@ ListaUsuario<T>::~ListaUsuario() {
 	}
 	delete inicio;
 	inicio = NULL;
+}
+
+template<class T>
+string ListaUsuario<T>::generarId() {
+	string id = "";
+	int num;
+	for (int i = 0; i < 6; i++) {
+		num = rand() % 10;
+		id += to_string(num);
+	}
+	return id;
 }
 
 template<class T>
@@ -66,6 +78,7 @@ void ListaUsuario<T>::guardar() {
 
 	while (aux != NULL) {
 		Usuario* us = (Usuario*)(aux->valor);
+		if(us->getID() == "")us->setID(generarId());
 		archivo << us->toString() << endl;
 		aux = aux->siguiente;
 	}
@@ -93,7 +106,8 @@ void ListaUsuario<T>::abrir() {
 		getline(ss, a, delimit);
 		getline(ss, b, delimit);
 		getline(ss, c, delimit);
-		Usuario* us = new Usuario(a, b, c);
+		Usuario* us = new Usuario(a, b);
+		us->setID(c);
 		insertar(us);
 	}
 	

@@ -3,7 +3,7 @@ using namespace std;
 class Usuario {
 	string usu, contra, id;
 public:
-	Usuario(string usu = "", string contra = "", string id = "") : usu(usu), contra(contra), id(id) {
+	Usuario(string usu = "", string contra = "", string id = "") : usu(usu), contra(contra) {
 		
 	}
 	string toString() {
@@ -21,6 +21,8 @@ public:
 	string getUsu() { return this->usu; }
 
 	string getContra() { return this->contra; }	
+
+	void setID(string id) { this->id = id; }
 
 	string idArchivoEnviado() {
 		ostringstream ss;

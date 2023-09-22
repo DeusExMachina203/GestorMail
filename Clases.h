@@ -2,6 +2,7 @@
 #include<sstream>
 #include<fstream>
 #include<iostream>
+#include<ctime>
 #include<cstdlib>
 #include "Nodo.h"
 #include "Mail.h"

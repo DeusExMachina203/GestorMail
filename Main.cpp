@@ -66,6 +66,7 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 }
 
 int main() {
+	srand(time(0));
 	while (1) {
 		cin.clear();
 		ListaUsuario<Usuario*> uLista;
@@ -77,7 +78,6 @@ int main() {
 		cin >> op1;
 		if (op1 == 1) {
 			string usu, pass;
-			string idprovisional = "102430";
 			Usuario* us;
 			do {
 				system("cls");
@@ -87,7 +87,7 @@ int main() {
 				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
 				if (usu == "1") continue;
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
-				us = new Usuario(usu, pass, idprovisional);
+				us = new Usuario(usu, pass);
 
 			} while (uLista.busqueda(us) == false);
 			
@@ -96,13 +96,12 @@ int main() {
 		else if (op1 == 2) {
 			system("cls");
 			string usu, pass, passV;
-			string idprovisional = "102431";
 
 			cout << "Recuerde que los espacios tambien se consideran!" << endl;
 			cout << "Ingrese un usuario: "; cin >> usu; cout << endl; 
 			cout << "Ingrese una contrasena: "; cin >> pass; cout << endl;
 			cout << "Verifique su contrasena: "; cin >> passV; cout << endl;
-			Usuario* us = new Usuario(usu, pass, idprovisional);
+			Usuario* us = new Usuario(usu, pass);
 			if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
 				uLista.guardar();
