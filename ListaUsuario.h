@@ -28,11 +28,13 @@ ListaUsuario<T>::~ListaUsuario() {
 
 template<class T>
 void ListaUsuario<T>::insertar(T v) {
+	
 	Nodo<T>* nodo = new Nodo<T>(v);
 	if (inicio == NULL) inicio = nodo;
 	else nodo->siguiente = inicio;
 	inicio = nodo;
 	nodo = NULL;
+
 }
 
 template<class T>
@@ -88,8 +90,9 @@ void ListaUsuario<T>::abrir() {
 		getline(ss, a, delimit);
 		getline(ss, b, delimit);
 		getline(ss, c, delimit);
-
-		insertar(new Usuario(a, b, c));
+		Usuario* us = new Usuario(a, b, c);
+		insertar(us);
 	}
+	
 	archivo.close();
 }

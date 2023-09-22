@@ -60,7 +60,6 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 			}
 			break;
 		case 4:
-			uLista.guardar();
 			return;
 		}
 	}
@@ -68,6 +67,7 @@ void principal(string usu, ListaUsuario<Usuario*> uLista, ListaRecibidos<Mail*>*
 
 int main() {
 	while (1) {
+		cin.clear();
 		ListaUsuario<Usuario*> uLista;
 		uLista.abrir();
 		ListaRecibidos<Mail*>* mrLista;
@@ -85,7 +85,7 @@ int main() {
 				cout << "Recuerde no dejar ningun espacio!" << endl;
 				cout << "Si desea regresar ingrese 1 en el apartado usuario." << endl;
 				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
-				if (usu == "1") main();
+				if (usu == "1") continue;
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
 				us= new Usuario(usu, pass, idprovisional);
 
@@ -105,12 +105,12 @@ int main() {
 			Usuario* us = new Usuario(usu, pass, idprovisional);
 			if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
+				uLista.guardar(us);
 			}
 
 			principal(usu, uLista, mrLista, meLista, us);
 		}
 		system("cls");
-		uLista.guardar();
 	}
 	return 0;
 }
