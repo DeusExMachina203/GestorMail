@@ -26,14 +26,14 @@ public:
 
 	string idArchivoEnviado() {
 		ostringstream ss;
-		ss << "//MailsEnviados//";
+		ss << "./MailsEnviados/";
 		ss << id;
 		ss << ".cvs";
 		return (ss.str());
 	}
 	string idArchivoRecibido() {
 		ostringstream ss;
-		ss << "//MailsRecibidos//";
+		ss << "./MailsRecibidos/";
 		ss << id;
 		ss << ".cvs";
 		return (ss.str());

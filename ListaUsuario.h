@@ -78,7 +78,13 @@ void ListaUsuario<T>::guardar() {
 
 	while (aux != NULL) {
 		Usuario* us = (Usuario*)(aux->valor);
-		if(us->getID() == "")us->setID(generarId());
+		if(us->getID() == ""){
+			us->setID(generarId());
+			ofstream enviados("./MailsEnviados/" + us->getID() + ".csv");
+			ofstream recibidos("./MailsRecibidos/" + us->getID() + ".csv");
+			enviados.close();
+			recibidos.close();
+		}
 		archivo << us->toString() << endl;
 		aux = aux->siguiente;
 	}
