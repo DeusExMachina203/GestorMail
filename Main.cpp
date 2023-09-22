@@ -10,7 +10,9 @@ void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>
 			menuPrincipal();
 			cout << "Ingresar opcion: "; cin >> op2;
 		} while (op2 < 1 || op2>4);
-		string asunto, texto;
+		string asunto, texto, nombreRemitente;
+		Mail* mensaje;
+		Usuario* remitente;
 		switch (op2) {
 		case 1:
 			system("cls");
@@ -33,15 +35,23 @@ void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>
 		case 2:
 			
 			meLista->abrir(usX->idArchivoEnviado());
+			mrLista->abrir(usX->idArchivoRecibido());
 			system("cls");
+			cout<< "Ingrese el usuario al que desea enviar el correo: " << endl;
+			cin >> nombreRemitente;
 			cout << "\nIngrese el asunto del correo que desea enviar:" << endl;
 			cin >> asunto;
 			cout << "\nIngrese el texto del correo que desea enviar: " << endl;
 			cin >> texto;
-			cout<< "enviando...";
-			meLista->push(new Mail(asunto, texto, usu));
-			cout << "\nCorreo enviado exitosamente!" << endl;
+			mensaje = new Mail(asunto, texto, usu, nombreRemitente);
+			remitente = new Usuario(nombreRemitente);
+			if (uLista.busquedaId(remitente) == "") {
+				cout << "El usuario al que desea enviar el correo no existe" << endl;
+				break;
+			}
+			meLista->push(mensaje);
 			meLista->guardar(usX->idArchivoEnviado());
+			mensaje->Enviar(uLista.busquedaId(remitente));
 			break;
 		case 3:
 			system("cls");

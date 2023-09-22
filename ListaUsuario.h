@@ -8,6 +8,7 @@ public:
 	ListaUsuario() { inicio = NULL; }
 	~ListaUsuario();
 	string generarId();
+	string busquedaId(T v);
 	void insertar(T v);
 	bool busqueda(T &v);
 	void guardar();
@@ -62,6 +63,18 @@ bool ListaUsuario<T>::busqueda(T &v) {
 		aux = aux->siguiente;
 	}
 	return existe;
+}
+
+template<class T>
+string ListaUsuario<T>::busquedaId(T v) {
+	Nodo<T>* aux = inicio;
+	while (aux != NULL) {
+		if (aux->valor->getUsu() == v->getUsu()) { 
+			return aux->valor->getID();
+		}
+		aux = aux->siguiente;
+	}
+	return "";
 }
 
 template<class T>

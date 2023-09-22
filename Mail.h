@@ -1,9 +1,9 @@
 using namespace std;
 
 class Mail {
-	string asunto, texto, emisor;
+	string asunto, texto, emisor, remitente;
 public:
-	Mail(string asunto = "", string texto = "", string emisor = "") :asunto(asunto), texto(texto), emisor(emisor) {}
+	Mail(string asunto = "", string texto = "", string emisor = "", string remitente = "") :asunto(asunto), texto(texto), emisor(emisor), remitente() {}
 	string toString() {
 		ostringstream ss;
 		ss << asunto;
@@ -11,6 +11,8 @@ public:
 		ss << texto;
 		ss << "&";
 		ss << emisor;
+		ss << "&";
+		ss << remitente;
 		return (ss.str());
 	}
 	string printMail() {
@@ -22,5 +24,16 @@ public:
 		ss << "\n";
 		ss << texto;
 		return (ss.str());
+	}
+	void Enviar(string remitente) {
+		ofstream archivo;
+		string nombreArchivo = "./MailsRecibidos/" + remitente + ".csv";
+		archivo.open(nombreArchivo, ios::app);
+		if (archivo.fail()) {
+			cout << "\nNo se pudo abrir el archivo";
+			exit(1);
+		}
+		archivo << toString() << endl;
+		archivo.close();
 	}
 };
