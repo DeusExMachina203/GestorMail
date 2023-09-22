@@ -13,6 +13,7 @@ void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>
 		string asunto, texto, nombreRemitente;
 		Mail* mensaje;
 		Usuario* remitente;
+		stringstream nombreRemitenteStream(nombreRemitente);
 		switch (op2) {
 		case 1:
 			system("cls");
@@ -38,11 +39,14 @@ void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>
 			mrLista->abrir(usX->idArchivoRecibido());
 			system("cls");
 			cout<< "Ingrese el usuario al que desea enviar el correo: " << endl;
-			cin >> nombreRemitente;
+			cin.ignore();
+			getline(cin, nombreRemitente);
+			cin.ignore();
 			cout << "\nIngrese el asunto del correo que desea enviar:" << endl;
-			cin >> asunto;
+			getline(cin, asunto);
+			cin.ignore();
 			cout << "\nIngrese el texto del correo que desea enviar: " << endl;
-			cin >> texto;
+			getline(cin, texto);
 			mensaje = new Mail(asunto, texto, usu, nombreRemitente);
 			remitente = new Usuario(nombreRemitente);
 			if (uLista.busquedaId(remitente) == "") {
