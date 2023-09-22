@@ -87,7 +87,7 @@ int main() {
 				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
 				if (usu == "1") continue;
 				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
-				us= new Usuario(usu, pass, idprovisional);
+				us = new Usuario(usu, pass, idprovisional);
 
 			} while (uLista.busqueda(us) == false);
 			
@@ -105,7 +105,7 @@ int main() {
 			Usuario* us = new Usuario(usu, pass, idprovisional);
 			if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
-				uLista.guardar(us);
+				uLista.guardar();
 			}
 
 			principal(usu, uLista, mrLista, meLista, us);

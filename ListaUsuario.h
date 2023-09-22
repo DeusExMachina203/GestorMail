@@ -43,7 +43,10 @@ bool ListaUsuario<T>::busqueda(T v) {
 	bool existe = false;
 
 	while (aux != NULL) {
-		if (aux->valor == v) { existe = true; }
+		if (aux->valor->getUsu() == v->getUsu() && aux->valor->getContra() == v->getContra()) { 
+			existe = true;
+			return existe;
+		}
 		aux = aux->siguiente;
 	}
 	return existe;
@@ -54,7 +57,7 @@ void ListaUsuario<T>::guardar() {
 	Nodo<T>* aux = inicio;
 	ofstream archivo;
 
-	archivo.open("usuarios.cvs", ios::trunc);
+	archivo.open("usuarios.csv", ios::trunc);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";
@@ -76,7 +79,7 @@ void ListaUsuario<T>::abrir() {
 	string linea;
 	char delimit = ',';
 
-	archivo.open("usuarios.cvs", ios::in);
+	archivo.open("usuarios.csv", ios::in);
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";

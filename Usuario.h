@@ -18,6 +18,10 @@ public:
 
 	string getID() { return this->id; }
 
+	string getUsu() { return this->usu; }
+
+	string getContra() { return this->contra; }	
+
 	string idArchivoEnviado() {
 		ostringstream ss;
 		ss << "//MailsEnviados//";
