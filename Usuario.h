@@ -18,7 +18,11 @@ public:
 
 	string getID() { return this->id; }
 
+	void setUsu(string usu) { this->usu = usu; }
+
 	string getUsu() { return this->usu; }
+
+	void setContra(string contra) { this->contra = contra; }
 
 	string getContra() { return this->contra; }	
 

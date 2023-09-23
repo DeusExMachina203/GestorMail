@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>* &mrLista, ListaEnviados<Mail*>* &meLista, Usuario* &usX) {
+void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail*>* &mrLista, ListaEnviados<Mail*>* &meLista, Usuario* &usX) {
 	int op2;
 	while (1) {
 		do {
@@ -49,7 +49,7 @@ void principal(string usu, ListaUsuario<Usuario*> &uLista, ListaRecibidos<Mail*>
 			getline(cin, texto);
 			mensaje = new Mail(asunto, texto, usu, nombreRemitente);
 			remitente = new Usuario(nombreRemitente);
-			if (uLista.busquedaId(remitente) == "") {
+			if (uLista.busquedaId(new Usuario(nombreRemitente)) == "") {
 				cout << "El usuario al que desea enviar el correo no existe" << endl;
 				break;
 			}
@@ -87,7 +87,7 @@ int main() {
 	srand(time(0));
 	while (1) {
 		cin.clear();
-		ListaUsuario<Usuario*> uLista;
+		ListaUsuario<Usuario> uLista;
 		uLista.abrir();
 		ListaRecibidos<Mail*>* mrLista = new ListaRecibidos<Mail*>();
 		ListaEnviados<Mail*>* meLista = new ListaEnviados<Mail*>();

@@ -3,21 +3,21 @@ using namespace std;
 template<class T>
 class ListaUsuario {
 private:
-	Nodo<T>* inicio;
+	Nodo<T*>* inicio;
 public:
 	ListaUsuario() { inicio = NULL; }
 	~ListaUsuario();
 	string generarId();
-	string busquedaId(T v);
-	void insertar(T v);
-	bool busqueda(T &v);
+	string busquedaId(T* v);
+	void insertar(T* v);
+	bool busqueda(T* v);
 	void guardar();
 	void abrir();
 };
 
 template<class T>
 ListaUsuario<T>::~ListaUsuario() {
-	Nodo<T>* temp;
+	Nodo<T*>* temp;
 	while (inicio != NULL) {
 		temp = inicio;
 		inicio = inicio->siguiente;
@@ -40,9 +40,9 @@ string ListaUsuario<T>::generarId() {
 }
 
 template<class T>
-void ListaUsuario<T>::insertar(T v) {
+void ListaUsuario<T>::insertar(T* v) {
 	
-	Nodo<T>* nodo = new Nodo<T>(v);
+	Nodo<T*>* nodo = new Nodo<T*>(v);
 	if (inicio == NULL) inicio = nodo;
 	else nodo->siguiente = inicio;
 	inicio = nodo;
@@ -51,8 +51,8 @@ void ListaUsuario<T>::insertar(T v) {
 }
 
 template<class T>
-bool ListaUsuario<T>::busqueda(T &v) {
-	Nodo<T>* aux = inicio;
+bool ListaUsuario<T>::busqueda(T* v) {
+	Nodo<T*>* aux = inicio;
 	bool existe = false;
 	while (aux != NULL) {
 		if (aux->valor->getUsu() == v->getUsu() && aux->valor->getContra() == v->getContra()) { 
@@ -66,8 +66,8 @@ bool ListaUsuario<T>::busqueda(T &v) {
 }
 
 template<class T>
-string ListaUsuario<T>::busquedaId(T v) {
-	Nodo<T>* aux = inicio;
+string ListaUsuario<T>::busquedaId(T* v) {
+	Nodo<T*>* aux = inicio;
 	while (aux != NULL) {
 		if (aux->valor->getUsu() == v->getUsu()) { 
 			return aux->valor->getID();
@@ -79,7 +79,7 @@ string ListaUsuario<T>::busquedaId(T v) {
 
 template<class T>
 void ListaUsuario<T>::guardar() {
-	Nodo<T>* aux = inicio;
+	Nodo<T*>* aux = inicio;
 	ofstream archivo;
 
 	archivo.open("usuarios.csv", ios::trunc);
@@ -90,7 +90,7 @@ void ListaUsuario<T>::guardar() {
 	}
 
 	while (aux != NULL) {
-		Usuario* us = (Usuario*)(aux->valor);
+		T* us = (T*)(aux->valor);
 		if(us->getID() == ""){
 			us->setID(generarId());
 			ofstream enviados("./MailsEnviados/" + us->getID() + ".csv");
@@ -127,7 +127,9 @@ void ListaUsuario<T>::abrir() {
 		getline(ss, a, delimit);
 		getline(ss, b, delimit);
 		getline(ss, c, delimit);
-		Usuario* us = new Usuario(a, b);
+		T* us = new T();
+		us->setUsu(a);
+		us->setContra(b);
 		us->setID(c);
 		insertar(us);
 	}
