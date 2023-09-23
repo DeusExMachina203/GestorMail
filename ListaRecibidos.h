@@ -4,27 +4,27 @@ using namespace std;
 template<class T>
 class ListaRecibidos {
 private:
-	Nodo<T>* tope;
+	Nodo<T*>* tope;
 public:
 	ListaRecibidos() { tope = NULL; }
-	void push(T v);
-	T pop();
+	void push(T* v);
+	T* pop();
 	bool estaVacia();
 	void guardar(string v);
 	void abrir(string v);
 };
 
 template<class T>
-void ListaRecibidos<T>::push(T v) {
-	if (estaVacia()) tope = new Nodo<T>(v);
-	else tope = new Nodo<T>(v, tope);
+void ListaRecibidos<T>::push(T* v) {
+	if (estaVacia()) tope = new Nodo<T*>(v);
+	else tope = new Nodo<T*>(v, tope);
 }
 
 template<class T>
-T ListaRecibidos<T>::pop() {
+T* ListaRecibidos<T>::pop() {
 	if (estaVacia()) return NULL; //error pila vacia
 	else {
-		T elemento = tope->valor;
+		T* elemento = tope->valor;
 		tope = tope->siguiente;
 		return elemento;
 	}
@@ -37,7 +37,7 @@ bool ListaRecibidos<T>::estaVacia() {
 
 template<class T>
 void ListaRecibidos<T>::guardar(string v) {
-	Nodo<T>* aux = tope;
+	Nodo<T*>* aux = tope;
 	ofstream archivo;
 
 	archivo.open(v.c_str(), ios::trunc);
@@ -48,7 +48,7 @@ void ListaRecibidos<T>::guardar(string v) {
 	}
 
 	while (aux != NULL) {
-		Mail* ml = (Mail*)(aux->valor);
+		T* ml = (T*)(aux->valor);
 		archivo << ml->toString() << endl;
 		aux = aux->siguiente;
 	}
@@ -78,7 +78,12 @@ void ListaRecibidos<T>::abrir(string v) {
 		getline(ss, emisor, delimit);
 		getline(ss, remitente, delimit);
 
-		push(new Mail(asunto, texto, emisor, remitente));
+		T* mail = new T();
+		mail->setAsunto(asunto);
+		mail->setTexto(texto);
+		mail->setEmisor(emisor);
+		mail->setRemitente(remitente);
+		push(mail);
 	}
 	archivo.close();
 }

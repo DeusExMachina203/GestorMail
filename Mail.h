@@ -27,6 +27,16 @@ public:
 		ss << texto;
 		return (ss.str());
 	}
+	
+	string getAsunto() { return this->asunto; }
+	string getTexto() { return this->texto; }
+	string getEmisor() { return this->emisor; }
+	string getRemitente() { return this->remitente; }
+	void setAsunto(string asunto) { this->asunto = asunto; }
+	void setTexto(string texto) { this->texto = texto; }
+	void setEmisor(string emisor) { this->emisor = emisor; }
+	void setRemitente(string remitente) { this->remitente = remitente; }
+
 	void Enviar(string remitente) {
 		ofstream archivo;
 		string nombreArchivo = "./MailsRecibidos/" + remitente + ".csv";

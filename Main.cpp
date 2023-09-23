@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail*>* &mrLista, ListaEnviados<Mail*>* &meLista, Usuario* &usX) {
+void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* &mrLista, ListaEnviados<Mail>* &meLista, Usuario* &usX) {
 	int op2;
 	while (1) {
 		do {
@@ -89,8 +89,8 @@ int main() {
 		cin.clear();
 		ListaUsuario<Usuario> uLista;
 		uLista.abrir();
-		ListaRecibidos<Mail*>* mrLista = new ListaRecibidos<Mail*>();
-		ListaEnviados<Mail*>* meLista = new ListaEnviados<Mail*>();
+		ListaRecibidos<Mail>* mrLista = new ListaRecibidos<Mail>();
+		ListaEnviados<Mail>* meLista = new ListaEnviados<Mail>();
 		int op1;
 		logo();
 		cin >> op1;
