@@ -115,7 +115,9 @@ void ListaUsuario<T>::abrir() {
 
 	if (archivo.fail()) {
 		cout << "\nNo se pudo abrir el archivo";
-		exit(1);
+		archivo.open("usuarios.csv");
+		archivo.close();
+		//exit(1);
 	}
 
 	while (getline(archivo, linea)) {
