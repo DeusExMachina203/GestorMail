@@ -16,3 +16,4 @@ using namespace std;
 #include "ListaRecibidos.h"
 #include"Funciones.h"
 #include "Menu.h"
+#include<locale.h>

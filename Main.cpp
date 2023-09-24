@@ -8,7 +8,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 		do {
 			system("cls");
 			menuPrincipal();
-			cout << "Ingresar opcion: "; cin >> op2;
+			cout << "Ingresar opción: "; cin >> op2;
 		} while (op2 < 1 || op2>4);
 		string asunto, texto, nombreRemitente;
 		Mail* mensaje;
@@ -87,7 +87,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			elem2 = meLista->pop();
 			if (elem2 != NULL) {
 				cout << elem2->printMail() << endl;
-				}
+			}
 			
 			cout << "\nSi desea imprimir todos los correos presione 1, si quiere regresar presione cualquier tecla";
 			cin >> o2;
@@ -106,6 +106,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 
 int main() {
 	srand(time(0));
+	setlocale(LC_CTYPE, "Spanish");
 	while (1) {
 		cin.clear();
 		ListaUsuario<Usuario> uLista;
@@ -125,7 +126,7 @@ int main() {
 				cout << "Si desea regresar ingrese 1 en el apartado usuario." << endl;
 				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
 				if (usu == "1") continue;
-				cout << "Ingrese su contrasena: "; cin >> pass; cout << endl;
+				cout << "Ingrese su contraseña: "; cin >> pass; cout << endl;
 				us = new Usuario(usu, pass);
 
 			} while (uLista.busqueda(us) == false);
@@ -136,14 +137,14 @@ int main() {
 			system("cls");
 			string usu, pass, passV;
 
-			cout << "Recuerde que los espacios tambien se consideran!" << endl;
+			cout << "Recuerde no dejar ningun espacio!" << endl;
 			cout << "Ingrese un usuario: "; cin >> usu; cout << endl;
-			cout << "Ingrese una contrasena: "; cin >> pass; cout << endl;
-			cout << "Verifique su contrasena: "; cin >> passV; cout << endl;
+			cout << "Ingrese una contraseña: "; cin >> pass; cout << endl;
+			cout << "Verifique su contraseña: "; cin >> passV; cout << endl;
 			Usuario* us = new Usuario(usu, pass);
 
 			if (uLista.busqueda(us) == true) {
-				cout << "\nEste usuario ya esta en uso." << endl;
+				cout << "\nEste usuario ya está en uso." << endl;
 				cout << "Presione cualquier tecla para continuar..." << endl;
 				cin.get();
 				cin.ignore();
