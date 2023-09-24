@@ -137,11 +137,19 @@ int main() {
 			string usu, pass, passV;
 
 			cout << "Recuerde que los espacios tambien se consideran!" << endl;
-			cout << "Ingrese un usuario: "; cin >> usu; cout << endl; 
+			cout << "Ingrese un usuario: "; cin >> usu; cout << endl;
 			cout << "Ingrese una contrasena: "; cin >> pass; cout << endl;
 			cout << "Verifique su contrasena: "; cin >> passV; cout << endl;
 			Usuario* us = new Usuario(usu, pass);
-			if (pass == passV && !uLista.busqueda(us)) {
+
+			if (uLista.busqueda(us) == true) {
+				cout << "\nEste usuario ya esta en uso." << endl;
+				cout << "Presione cualquier tecla para continuar..." << endl;
+				cin.get();
+				cin.ignore();
+				continue;
+			}
+			else if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
 				uLista.guardar();
 			}
