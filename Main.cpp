@@ -14,24 +14,48 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 		Mail* mensaje;
 		Usuario* remitente;
 		stringstream nombreRemitenteStream(nombreRemitente);
+		vector<Mail*> mostrador;
 		switch (op2) {
 		case 1:
 			system("cls");
 			Mail* elem1;
 			int o1;
 			mrLista->abrir(usX->idArchivoRecibido());
-			for (int i = 0; i < 5; i++) {
-				elem1 = mrLista->pop();
-				if (elem1 != NULL) cout << elem1->printMail() << endl;
+			// for (int i = 0; i < 5; i++) {
+			// 	elem1 = mrLista->pop();
+			// 	if (elem1 != NULL) cout << elem1->printMail() << endl;
+			// }
+			mostrador = listaAVector<ListaRecibidos<Mail>>(mrLista);
+			if (mostrador.size() == 0) {
+				cout << "No hay correos que mostrar, pulsa cualquier tecla para continuar..." << endl;
+				cin.ignore();
+				cin.get();
+				break;
 			}
-			cout << "\nSi desea imprimir todos los correos presione 1, si quiere regresar presione cualquier tecla";
-			cin >> o1;
-			if (o1 == 1) {
-				do {
-					elem1 = mrLista->pop();
-					if (elem1 != NULL) cout << elem1->printMail() << endl;
-				} while (elem1 != NULL);
+			do {
+				system("cls");
+				cout << "Como desea ordenar los correos: " << endl;
+				cout << "1. Por tiempo" << endl;
+				cout << "2. Por orden alfabetico del usuario" << endl;
+				cout << "3. Por orden alfabetico del asunto" << endl;
+				cout << "Ingrese su opcion: "; cin >> o1;
+			} while (o1 < 1 || o1>3 );
+			switch (o1) {
+			case 1:
+				mostrador = ordenarTiempo(mostrador, ordenarTiempo);
+				break;
+			case 2:
+				mostrador = ordenarAlfUsu(mostrador, ordenarAlfUsu);
+				break;
+			case 3:
+				mostrador = ordenarAlfAsu(mostrador, ordenarAlfAsu);
+				break;
 			}
+			for (int i = 0; i < mostrador.size(); i++) {
+				cout << mostrador[i]->printMail() << endl;
+			}
+			cin.ignore();
+			cin.get();
 			break;
 		case 2:
 			

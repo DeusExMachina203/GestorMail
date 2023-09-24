@@ -52,17 +52,32 @@ void ListaUsuario<T>::insertar(T* v) {
 
 template<class T>
 bool ListaUsuario<T>::busqueda(T* v) {
-	Nodo<T*>* aux = inicio;
-	bool existe = false;
-	while (aux != NULL) {
-		if (aux->valor->getUsu() == v->getUsu() && aux->valor->getContra() == v->getContra()) { 
-			existe = true;
-			v->setID(aux->valor->getID());
-			return existe;
-		}
-		aux = aux->siguiente;
+	// Nodo<T*>* aux = inicio;
+	// bool existe = false;
+	// while (aux != NULL) {
+	// 	if (aux->valor->getUsu() == v->getUsu() && aux->valor->getContra() == v->getContra()) { 
+	// 		existe = true;
+	// 		v->setID(aux->valor->getID());
+	// 		return existe;
+	// 	}
+	// 	aux = aux->siguiente;
+	// }
+	// return existe;
+
+	//ahora con recursividad
+	if (inicio == NULL) return false;
+	else if (inicio->valor->getUsu() == v->getUsu() && inicio->valor->getContra() == v->getContra()) {
+		v->setID(inicio->valor->getID());
+		return true;
 	}
-	return existe;
+	else {
+		Nodo<T*>* aux = inicio;
+		inicio = inicio->siguiente;
+		bool existe = busqueda(v);
+		inicio = aux;
+		return existe;
+	}
+
 }
 
 template<class T>

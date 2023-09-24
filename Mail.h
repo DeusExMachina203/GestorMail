@@ -2,6 +2,8 @@ using namespace std;
 
 class Mail {
 	string asunto, texto, emisor, remitente;
+	//i want this class to store the time it was sent down to the second
+	time_t hora = time(0);
 public:
 	Mail(string asunto = "", string texto = "", string emisor = "", string remitente = "") :asunto(asunto), texto(texto), emisor(emisor), remitente(remitente) {}
 	string toString() {
@@ -32,6 +34,7 @@ public:
 	string getTexto() { return this->texto; }
 	string getEmisor() { return this->emisor; }
 	string getRemitente() { return this->remitente; }
+	time_t getHora() { return this->hora; }
 	void setAsunto(string asunto) { this->asunto = asunto; }
 	void setTexto(string texto) { this->texto = texto; }
 	void setEmisor(string emisor) { this->emisor = emisor; }
