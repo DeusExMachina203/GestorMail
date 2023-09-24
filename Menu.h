@@ -24,3 +24,11 @@ void menuPrincipal() {
 	cout << "3. Ver Correos Enviados" << endl;
 	cout << "4. Cerrar Sesion" << endl;
 }
+
+void menuOrd() {
+	cout << "Como desea ordenar los correos: " << endl;
+	cout << "1. Por tiempo" << endl;
+	cout << "2. Por orden alfabetico del usuario" << endl;
+	cout << "3. Por orden alfabetico del asunto" << endl;
+	cout << "Ingrese su opcion: ";
+}

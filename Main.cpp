@@ -34,11 +34,8 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			}
 			do {
 				system("cls");
-				cout << "Como desea ordenar los correos: " << endl;
-				cout << "1. Por tiempo" << endl;
-				cout << "2. Por orden alfabetico del usuario" << endl;
-				cout << "3. Por orden alfabetico del asunto" << endl;
-				cout << "Ingrese su opcion: "; cin >> o1;
+				menuOrd();
+				cin >> o1;
 			} while (o1 < 1 || o1>3 );
 			switch (o1) {
 			case 1:
