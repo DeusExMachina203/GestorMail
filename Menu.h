@@ -1,6 +1,6 @@
 ﻿using namespace std;
 
-void logo() {
+/*void logo() {
 	cout << "	 ▄████████   ▄▄▄▄███▄▄▄▄      ▄████████  ▄█   ▄█" << endl;
 	cout << "	███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███  ███" << endl;
 	cout << "	███    █▀  ███   ███   ███   ███    ███ ███▌ ███" << endl;
@@ -12,6 +12,21 @@ void logo() {
 	cout << "											     ▀" << endl;
 	cout << "-----------------------------------------------------------" << endl;
 	cout << "						Bienvenido!!" << endl;
+	cout << "Seleccione una opción: " << endl;
+	cout << "1. Iniciar Sesión" << endl;
+	cout << "2. Crear una cuenta" << endl;
+}*/
+
+void logo() {
+	cout << "	######## ##     ##    ###    #### ##" << endl;
+	cout << "	##       ###   ###   ## ##    ##  ##" << endl;
+	cout << "	##       #### ####  ##   ##   ##  ##" << endl;
+	cout << "	######   ## ### ## ##     ##  ##  ##" << endl;
+	cout << "	##       ##     ## #########  ##  ##" << endl;
+	cout << "	##       ##     ## ##     ##  ##  ##" << endl;
+	cout << "	##       ##     ## ##     ## #### ########" << endl;
+	cout << "-------------------------------------------------" << endl;
+	cout << "				  Bienvenido!!" << endl;
 	cout << "Seleccione una opción: " << endl;
 	cout << "1. Iniciar Sesión" << endl;
 	cout << "2. Crear una cuenta" << endl;
