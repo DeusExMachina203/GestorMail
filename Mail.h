@@ -15,6 +15,8 @@ public:
 		ss << emisor;
 		ss << "&";
 		ss << remitente;
+		ss << "&";
+		ss << hora;
 		return (ss.str());
 	}
 	string printMail() {
