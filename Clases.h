@@ -6,6 +6,7 @@
 #include<ctime>
 #include<cstdlib>
 #include<vector>
+#include<locale.h>
 using namespace std;
 
 #include "Funciones.h"
@@ -17,4 +18,3 @@ using namespace std;
 #include "ListaRecibidos.h"
 #include"FuncionesOrdenamiento.h"
 #include "Menu.h"
-#include<locale.h>
