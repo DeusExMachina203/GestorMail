@@ -14,6 +14,6 @@ using namespace std;
 #include "ListaEnviados.h"
 #include "ListaUsuario.h"
 #include "ListaRecibidos.h"
-#include"Funciones.h"
+#include"FuncionesOrdenamiento.h"
 #include "Menu.h"
 #include<locale.h>
