@@ -10,7 +10,7 @@ auto generarId = [](){
 
 template<class T>
 auto comparar = [](T a, T b) {
-    bool v = false;
-    if (a == b) v = true;
-    return v;
+    bool c = false;
+    if (a == b) c = true;
+    return c;
 };
