@@ -7,3 +7,10 @@ auto generarId = [](){
     }
     return id;
 };
+
+template<class T>
+auto comparar = [](T a, T b) {
+    bool v = false;
+    if (a == b) v = true;
+    return v;
+};

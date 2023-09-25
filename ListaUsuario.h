@@ -72,7 +72,7 @@ template<class T>
 string ListaUsuario<T>::busquedaId(T* v) {
 	Nodo<T*>* aux = inicio;
 	while (aux != NULL) {
-		if (aux->valor->getUsu() == v->getUsu()) { 
+		if ( comparar(aux->valor->getUsu(), v->getUsu()) == true) { 
 			return aux->valor->getID();
 		}
 		aux = aux->siguiente;
