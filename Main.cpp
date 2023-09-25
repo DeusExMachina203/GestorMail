@@ -106,7 +106,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 
 int main() {
 	srand(time(0));
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "spanish");
 	while (1) {
 		cin.clear();
 		ListaUsuario<Usuario> uLista;
