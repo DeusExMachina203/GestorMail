@@ -8,6 +8,7 @@
 #include<vector>
 using namespace std;
 
+#include "Funciones.h"
 #include "Nodo.h"
 #include "Mail.h"
 #include "Usuario.h"

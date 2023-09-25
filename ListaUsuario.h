@@ -7,7 +7,6 @@ private:
 public:
 	ListaUsuario() { inicio = NULL; }
 	~ListaUsuario();
-	string generarId();
 	string busquedaId(T* v);
 	void insertar(T* v);
 	bool busqueda(T* v);
@@ -26,17 +25,6 @@ ListaUsuario<T>::~ListaUsuario() {
 	}
 	delete inicio;
 	inicio = NULL;
-}
-
-template<class T>
-string ListaUsuario<T>::generarId() {
-	string id = "";
-	int num;
-	for (int i = 0; i < 6; i++) {
-		num = rand() % 10;
-		id += to_string(num);
-	}
-	return id;
 }
 
 template<class T>
