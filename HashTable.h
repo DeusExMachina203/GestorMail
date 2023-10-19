@@ -1,13 +1,13 @@
 
 class HashTabla {
 private:
-	HashEntidad** tabla;
+	Hash** tabla;
 	int numElementos;
 	int TABLE_SIZE;
 public:
 	HashTabla(int TABLE_SIZE = 128) {
 		this->TABLE_SIZE = TABLE_SIZE;
-		tabla = new HashEntidad * [TABLE_SIZE];
+		tabla = new Hash * [TABLE_SIZE];
 		for (int i = 0; i < TABLE_SIZE; ++i)
 			tabla[i] = nullptr;
 		numElementos = 0;
@@ -31,7 +31,7 @@ public:
 			step++;
 		}
 		
-		tabla[hash] = new HashEntidad(key, value);
+		tabla[hash] = new Hash(key, value);
 		numElementos++;
 	}
 
