@@ -16,5 +16,7 @@ using namespace std;
 #include "ListaEnviados.h"
 #include "ListaUsuario.h"
 #include "ListaRecibidos.h"
-#include"FuncionesOrdenamiento.h"
+#include "FuncionesOrdenamiento.h"
 #include "Menu.h"
+#include "Hash.h"
+#include "HashTable.h"
