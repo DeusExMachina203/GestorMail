@@ -14,7 +14,7 @@ auto listaAVector = [](T* lista) {
     return v;
 };
 
-//crea una funcion que coloque todos los elementos de la lista en un vector y luego los ordene por tiempo con Mergesort
+//crea una funcion que coloque todos los elementos de la lista en un vector y luego los ordene por tiempo de mas nuevo a mas antiguo con Mergesort
 auto ordenarTiempo = [](vector<Mail*> v, auto&& ordenarTiempo) {
     if (v.size() == 1) return v;
     else {

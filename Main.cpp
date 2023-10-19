@@ -8,7 +8,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 		do {
 			system("cls");
 			menuPrincipal();
-			cout << "Ingresar opción: "; cin >> op2;
+			cout << "Ingresar opciï¿½n: "; cin >> op2;
 		} while (op2 < 1 || op2>4);
 		string asunto, texto, nombreRemitente;
 		Mail* mensaje;
@@ -48,7 +48,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 				mostrador = ordenarAlfAsu(mostrador, ordenarAlfAsu);
 				break;
 			}
-			for (int i = 0; i < mostrador.size(); i++) {
+			for (int i = mostrador.size()-1; i >= 0; i--) {
 				cout << mostrador[i]->printMail() << endl;
 			}
 			cin.ignore();
@@ -84,19 +84,34 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			int o2;
 			meLista->abrir(usX->idArchivoEnviado());
 			
-			elem2 = meLista->pop();
-			if (elem2 != NULL) {
-				cout << elem2->printMail() << endl;
+			mostrador = listaAVector<ListaEnviados<Mail>>(meLista);
+			if (mostrador.size() == 0) {
+				cout << "No hay correos que mostrar, pulsa cualquier tecla para continuar..." << endl;
+				cin.ignore();
+				cin.get();
+				break;
 			}
-			
-			cout << "\nSi desea imprimir todos los correos presione 1, si quiere regresar presione cualquier tecla";
-			cin >> o2;
-			if (o2 == 1) {
-				do {
-					elem2 = meLista->pop();
-					if (elem2 != NULL) cout << elem2->printMail() << endl;
-				} while (elem2 != NULL);
+			do {
+				system("cls");
+				menuOrd();
+				cin >> o1;
+			} while (o1 < 1 || o1>3 );
+			switch (o1) {
+			case 1:
+				mostrador = ordenarTiempo(mostrador, ordenarTiempo);
+				break;
+			case 2:
+				mostrador = ordenarAlfUsu(mostrador, ordenarAlfUsu);
+				break;
+			case 3:
+				mostrador = ordenarAlfAsu(mostrador, ordenarAlfAsu);
+				break;
 			}
+			for (int i = mostrador.size()-1; i >= 0; i--) {
+				cout << mostrador[i]->printMail() << endl;
+			}
+			cin.ignore();
+			cin.get();
 			break;
 		case 4:
 			return;
@@ -107,6 +122,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 int main() {
 	srand(time(0));
 	setlocale(LC_ALL, "spanish");
+	system("cls");
 	while (1) {
 		cin.clear();
 		ListaUsuario<Usuario> uLista;
@@ -126,7 +142,7 @@ int main() {
 				cout << "Si desea regresar ingrese 1 en el apartado usuario." << endl;
 				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
 				if (usu == "1") continue;
-				cout << "Ingrese su contraseña: "; cin >> pass; cout << endl;
+				cout << "Ingrese su contraseï¿½a: "; cin >> pass; cout << endl;
 				us = new Usuario(usu, pass);
 
 			} while (uLista.busqueda(us) == false);
@@ -139,12 +155,12 @@ int main() {
 
 			cout << "Recuerde no dejar ningun espacio!" << endl;
 			cout << "Ingrese un usuario: "; cin >> usu; cout << endl;
-			cout << "Ingrese una contraseña: "; cin >> pass; cout << endl;
-			cout << "Verifique su contraseña: "; cin >> passV; cout << endl;
+			cout << "Ingrese una contraseï¿½a: "; cin >> pass; cout << endl;
+			cout << "Verifique su contraseï¿½a: "; cin >> passV; cout << endl;
 			Usuario* us = new Usuario(usu, pass);
 
 			if (uLista.busqueda(us) == true) {
-				cout << "\nEste usuario ya está en uso." << endl;
+				cout << "\nEste usuario ya estï¿½ en uso." << endl;
 				cout << "Presione cualquier tecla para continuar..." << endl;
 				cin.get();
 				cin.ignore();
