@@ -8,7 +8,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 		do {
 			system("cls");
 			menuPrincipal();
-			cout << "Ingresar opci�n: "; cin >> op2;
+			centrar("Ingresar opcion: "); cin >> op2;
 		} while (op2 < 1 || op2>4);
 		string asunto, texto, nombreRemitente;
 		Mail* mensaje;
@@ -27,7 +27,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			// }
 			mostrador = listaAVector<ListaRecibidos<Mail>>(mrLista);
 			if (mostrador.size() == 0) {
-				cout << "No hay correos que mostrar, pulsa cualquier tecla para continuar..." << endl;
+				centrarTexto("No hay correos que mostrar, pulsa cualquier tecla para continuar...");
 				cin.ignore();
 				cin.get();
 				break;
@@ -59,19 +59,21 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			meLista->abrir(usX->idArchivoEnviado());
 			mrLista->abrir(usX->idArchivoRecibido());
 			system("cls");
-			cout<< "Ingrese el usuario al que desea enviar el correo: " << endl;
+			centrarTexto("Ingrese el usuario al que desea enviar el correo: ");
 			cin.ignore();
 			getline(cin, nombreRemitente);
 			cin.ignore();
-			cout << "\nIngrese el asunto del correo que desea enviar:" << endl;
+			cout << endl;
+			centrarTexto("Ingrese el asunto del correo que desea enviar:");
 			getline(cin, asunto);
 			cin.ignore();
-			cout << "\nIngrese el texto del correo que desea enviar: " << endl;
+			cout << endl;
+			centrarTexto("Ingrese el texto del correo que desea enviar: ");
 			getline(cin, texto);
 			mensaje = new Mail(asunto, texto, usu, nombreRemitente);
 			remitente = new Usuario(nombreRemitente);
 			if (uLista.busquedaId(new Usuario(nombreRemitente)) == "") {
-				cout << "El usuario al que desea enviar el correo no existe" << endl;
+				centrarTexto("El usuario al que desea enviar el correo no existe");
 				break;
 			}
 			meLista->push(mensaje);
@@ -86,7 +88,7 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			
 			mostrador = listaAVector<ListaEnviados<Mail>>(meLista);
 			if (mostrador.size() == 0) {
-				cout << "No hay correos que mostrar, pulsa cualquier tecla para continuar..." << endl;
+				centrarTexto("No hay correos que mostrar, pulsa cualquier tecla para continuar...");
 				cin.ignore();
 				cin.get();
 				break;
@@ -137,12 +139,13 @@ int main() {
 			Usuario* us;
 			do {
 				system("cls");
-
-				cout << "Recuerde no dejar ningun espacio!" << endl;
-				cout << "Si desea regresar ingrese 1 en el apartado usuario." << endl;
-				cout << "Ingrese su usuario: "; cin >> usu; cout << endl;
+				
+				cout << endl;
+				centrarTexto("Recuerde no dejar ningun espacio!");
+				centrarTexto("Si desea regresar ingrese 1 en el apartado usuario.");
+				centrar("Ingrese su usuario: "); cin >> usu; cout << endl;
 				if (usu == "1") continue;
-				cout << "Ingrese su contrase�a: "; cin >> pass; cout << endl;
+				centrar("Ingrese su contrasena: "); cin >> pass; cout << endl;
 				us = new Usuario(usu, pass);
 
 			} while (uLista.busqueda(us) == false);
@@ -153,15 +156,17 @@ int main() {
 			system("cls");
 			string usu, pass, passV;
 
-			cout << "Recuerde no dejar ningun espacio!" << endl;
-			cout << "Ingrese un usuario: "; cin >> usu; cout << endl;
-			cout << "Ingrese una contrase�a: "; cin >> pass; cout << endl;
-			cout << "Verifique su contrase�a: "; cin >> passV; cout << endl;
+			cout << endl;
+			centrarTexto("Recuerde no dejar ningun espacio!");
+			centrar("Ingrese su usuario: "); cin >> usu; cout << endl;
+			centrar("Ingrese su contrasena: "); cin >> pass; cout << endl;
+			centrar("Verifique su contrasena: "); cin >> passV; cout << endl;
 			Usuario* us = new Usuario(usu, pass);
 
 			if (uLista.busqueda(us) == true) {
-				cout << "\nEste usuario ya est� en uso." << endl;
-				cout << "Presione cualquier tecla para continuar..." << endl;
+				cout << endl;
+				centrarTexto("Este usuario ya esta en uso.");
+				centrarTexto("Presione cualquier tecla para continuar...");
 				cin.get();
 				cin.ignore();
 				continue;
