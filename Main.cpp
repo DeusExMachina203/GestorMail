@@ -128,7 +128,11 @@ int main() {
 	while (1) {
 		cin.clear();
 		ListaUsuario<Usuario> uLista;
+		HashTabla* ht = new HashTabla();
 		uLista.abrir();
+		int keys[] = uLista.getKeys();
+		ht->abrir();
+
 		ListaRecibidos<Mail>* mrLista = new ListaRecibidos<Mail>();
 		ListaEnviados<Mail>* meLista = new ListaEnviados<Mail>();
 		int op1;
@@ -146,9 +150,10 @@ int main() {
 				centrar("Ingrese su usuario: "); cin >> usu; cout << endl;
 				if (usu == "1") continue;
 				centrar("Ingrese su contrasena: "); cin >> pass; cout << endl;
-				us = new Usuario(usu, pass);
+				int key = ht->generarKey(pass);
+				us = new Usuario(usu, to_string(key));
 
-			} while (uLista.busqueda(us) == false);
+			} while (uLista.busqueda(us) == false && ht->buscar(key) != pass);
 			
 			principal(usu, uLista, mrLista, meLista, us);
 		}
@@ -161,7 +166,8 @@ int main() {
 			centrar("Ingrese su usuario: "); cin >> usu; cout << endl;
 			centrar("Ingrese su contrasena: "); cin >> pass; cout << endl;
 			centrar("Verifique su contrasena: "); cin >> passV; cout << endl;
-			Usuario* us = new Usuario(usu, pass);
+			int key = ht->generarKey(pass);
+			Usuario* us = new Usuario(usu, to_string(key));
 
 			if (uLista.busqueda(us) == true) {
 				cout << endl;
@@ -174,6 +180,8 @@ int main() {
 			else if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
 				uLista.guardar();
+				ht->insertar(key, pass);
+				ht->guardar();
 			}
 
 			principal(usu, uLista, mrLista, meLista, us);

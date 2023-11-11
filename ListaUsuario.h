@@ -12,6 +12,8 @@ public:
 	bool busqueda(T* v);
 	void guardar();
 	void abrir();
+	//int cantidad();
+	int getKeys();
 };
 
 template<class T>
@@ -43,7 +45,7 @@ bool ListaUsuario<T>::busqueda(T* v) {
 	// Nodo<T*>* aux = inicio;
 	// bool existe = false;
 	// while (aux != NULL) {
-	// 	if (aux->valor->getUsu() == v->getUsu() && aux->valor->getContra() == v->getContra()) { 
+	// 	if (aux->valor->getUsu() == v->getUsu() && aux->valor->getKey() == v->getKey()) { 
 	// 		existe = true;
 	// 		v->setID(aux->valor->getID());
 	// 		return existe;
@@ -54,7 +56,7 @@ bool ListaUsuario<T>::busqueda(T* v) {
 
 	//ahora con recursividad
 	if (inicio == NULL) return false;
-	else if (inicio->valor->getUsu() == v->getUsu() && inicio->valor->getContra() == v->getContra()) {
+	else if (inicio->valor->getUsu() == v->getUsu() && inicio->valor->getKey() == v->getKey()) {
 		v->setID(inicio->valor->getID());
 		return true;
 	}
@@ -132,10 +134,36 @@ void ListaUsuario<T>::abrir() {
 		getline(ss, c, delimit);
 		T* us = new T();
 		us->setUsu(a);
-		us->setContra(b);
+		us->setKey(b);
 		us->setID(c);
 		insertar(us);
 	}
 	
 	archivo.close();
+}
+
+//template<class T>
+//int ListaUsuario<T>::cantidad() {
+//	int c = 0;
+//	Nodo<T*>* aux = inicio;
+//	while (aux != nullptr) {
+//		aux = aux->siguiente;
+//		c++;
+//	}
+//	return c;
+//}
+
+template<class T>
+int ListaUsuario<T>::getKeys() {
+	Nodo<T*>* aux = inicio;
+	int n=0;
+	int keys[];
+	T* us = new T();
+	while (aux != nullptr) {
+		us = inicio->valor;
+		keys[n] = stoi(us->getKey());
+		aux->siguiente;
+		n++;
+	}
+	return keys[];
 }

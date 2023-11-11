@@ -1,16 +1,16 @@
 using namespace std;
 
 class Usuario {
-	string usu, contra, id;
+	string usu, key, id;
 public:
-	Usuario(string usu = "", string contra = "", string id = "") : usu(usu), contra(contra) {
+	Usuario(string usu = "", string key = "", string id = "") : usu(usu), key(key) {
 		
 	}
 	string toString() {
 		ostringstream ss;
 		ss << usu;
 		ss<< ",";
-		ss << contra;
+		ss << key;
 		ss << ",";
 		ss << id;
 		return (ss.str());
@@ -22,9 +22,9 @@ public:
 
 	string getUsu() { return this->usu; }
 
-	void setContra(string contra) { this->contra = contra; }
+	void setKey(string key) { this->key = key; }
 
-	string getContra() { return this->contra; }	
+	string getKey() { return this->key; }	
 
 	void setID(string id) { this->id = id; }
 
