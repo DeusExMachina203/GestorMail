@@ -12,7 +12,7 @@ public:
 	bool busqueda(T* v);
 	void guardar();
 	void abrir();
-	//int cantidad();
+	int cantidad();
 	int getKeys();
 };
 
@@ -142,22 +142,22 @@ void ListaUsuario<T>::abrir() {
 	archivo.close();
 }
 
-//template<class T>
-//int ListaUsuario<T>::cantidad() {
-//	int c = 0;
-//	Nodo<T*>* aux = inicio;
-//	while (aux != nullptr) {
-//		aux = aux->siguiente;
-//		c++;
-//	}
-//	return c;
-//}
+template<class T>
+int ListaUsuario<T>::cantidad() {
+	int c = 0;
+	Nodo<T*>* aux = inicio;
+	while (aux != nullptr) {
+		aux = aux->siguiente;
+		c++;
+	}
+	return c;
+}
 
 template<class T>
 int ListaUsuario<T>::getKeys() {
 	Nodo<T*>* aux = inicio;
 	int n=0;
-	int keys[];
+	int keys[cantidad()];
 	T* us = new T();
 	while (aux != nullptr) {
 		us = inicio->valor;
@@ -165,5 +165,5 @@ int ListaUsuario<T>::getKeys() {
 		aux->siguiente;
 		n++;
 	}
-	return keys[];
+	return keys[cantidad()];
 }

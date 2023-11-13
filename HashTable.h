@@ -19,7 +19,7 @@ public:
 		delete[] tabla;
 	}
 
-	void insertar(int key, int value) {
+	void insertar(int key, string value) {
 		int base, step, hash;
 
 		if (numElementos == TABLE_SIZE) return;
@@ -44,7 +44,7 @@ public:
 		int i, base;
 		i = base = key % TABLE_SIZE;
 		while (true) {
-			if (tabla[i] == nullptr) return -1;
+			if (tabla[i] == nullptr) return 0;
 			else if (tabla[i]->getKey() == key) return tabla[i]->getValue();
 			else step++;
 			i + (base + step) % TABLE_SIZE;
@@ -59,7 +59,7 @@ public:
 		}
 
 		key = ((sum * 17) / 5) % 100;
-		return key
+		return key;
 	}
 
 	void guardar(int keys[]) {

@@ -130,7 +130,7 @@ int main() {
 		ListaUsuario<Usuario> uLista;
 		HashTabla* ht = new HashTabla();
 		uLista.abrir();
-		int keys[] = uLista.getKeys();
+		int keys[uLista.cantidad()] = uLista.getKeys();
 		ht->abrir();
 
 		ListaRecibidos<Mail>* mrLista = new ListaRecibidos<Mail>();
@@ -140,6 +140,7 @@ int main() {
 		cin >> op1;
 		if (op1 == 1) {
 			string usu, pass;
+			int key;
 			Usuario* us;
 			do {
 				system("cls");
@@ -150,7 +151,7 @@ int main() {
 				centrar("Ingrese su usuario: "); cin >> usu; cout << endl;
 				if (usu == "1") continue;
 				centrar("Ingrese su contrasena: "); cin >> pass; cout << endl;
-				int key = ht->generarKey(pass);
+				key = ht->generarKey(pass);
 				us = new Usuario(usu, to_string(key));
 
 			} while (uLista.busqueda(us) == false && ht->buscar(key) != pass);
@@ -179,9 +180,9 @@ int main() {
 			}
 			else if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
-				uLista.guardar();
+				uLista.guardar(keys[]);
 				ht->insertar(key, pass);
-				ht->guardar();
+				ht->guardar(uLista.cantidad());
 			}
 
 			principal(usu, uLista, mrLista, meLista, us);

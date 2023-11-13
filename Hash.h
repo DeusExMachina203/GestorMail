@@ -1,7 +1,7 @@
 class Hash {
 private:
 	int key;
-	int value;
+	string value;
 public:
 	Hash(int key, string value) {
 		this->key = key;
