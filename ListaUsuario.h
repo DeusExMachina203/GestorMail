@@ -14,6 +14,7 @@ public:
 	void abrir();
 	int cantidad();
 	int getKeys();
+	string usuarioAlAzar(int num);
 };
 
 template<class T>
@@ -166,4 +167,13 @@ int ListaUsuario<T>::getKeys() {
 		n++;
 	}
 	return keys[cantidad()];
+}
+
+template<class T>
+string ListaUsuario<T>::usuarioAlAzar(int num) {
+	Nodo<T*>* aux = inicio;
+	for (int i = 0; i < num; i++) {
+		aux = aux->siguiente;
+	}
+	return aux->valor->getUsu();
 }

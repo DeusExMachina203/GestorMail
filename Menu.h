@@ -49,6 +49,7 @@ void logo() {
 	centrarTexto("Seleccione una opcion: ");
 	centrarTexto("1. Iniciar Sesion");
 	centrarTexto("2. Crear una cuenta");
+	centrarTexto("3. Generar Datos");
 }
 
 void menuPrincipal() {

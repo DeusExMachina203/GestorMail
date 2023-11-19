@@ -1,5 +1,5 @@
 #include<string>
-#include <functional>
+#include<functional>
 #include<sstream>
 #include<fstream>
 #include<iostream>
@@ -20,3 +20,4 @@ using namespace std;
 #include "Menu.h"
 #include "Hash.h"
 #include "HashTable.h"
+#include "DataSet.h"

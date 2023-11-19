@@ -138,7 +138,8 @@ int main() {
 		int op1;
 		logo();
 		cin >> op1;
-		if (op1 == 1) {
+		switch(op1) {
+		case 1:
 			string usu, pass;
 			int key;
 			Usuario* us;
@@ -157,8 +158,8 @@ int main() {
 			} while (uLista.busqueda(us) == false && ht->buscar(key) != pass);
 			
 			principal(usu, uLista, mrLista, meLista, us);
-		}
-		else if (op1 == 2) {
+			break;
+		case 2:
 			system("cls");
 			string usu, pass, passV;
 
@@ -186,6 +187,28 @@ int main() {
 			}
 
 			principal(usu, uLista, mrLista, meLista, us);
+			break;
+		case 3:
+			const int numDatos = 500;
+			int key;
+			Usuario* us;
+			for (int i = 0; i < numDatos; i++) {
+				key = ht->generarKey(generarContrasena());
+				us = new Usuario(generarUsuario(), to_string(key));
+				uLista.insertar(us);
+
+			}
+
+			Mail* mensaje;
+			int numAzarUs, numAzarRem;
+			for (int i = 0; i < numDatos; i++) {
+				numAzarUs = rand() % (numDatos + 1);
+				numAzarRem = rand() % (numDatos + 1);
+				if (numAzarUs == numAzarRem) numAzarRem = rand() % (numDatos + 1);
+				mensaje = new Mail(generarAsunto(), generarTexto(), uLista.usuarioAlAzar(numAzarUs), uLista.usuarioAlAzar(numAzarRem));
+				meLista->push(mensaje);
+				mensaje->Enviar(uLista.busquedaId(numAzarRem));
+			}
 		}
 		system("cls");
 	}
