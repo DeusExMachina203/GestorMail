@@ -130,7 +130,8 @@ int main() {
 		ListaUsuario<Usuario> uLista;
 		HashTabla* ht = new HashTabla();
 		uLista.abrir();
-		int keys[uLista.cantidad()] = uLista.getKeys();
+		vector<int> keys(500);
+		keys = uLista.getKeys();
 		ht->abrir();
 
 		ListaRecibidos<Mail>* mrLista = new ListaRecibidos<Mail>();
@@ -154,7 +155,7 @@ int main() {
 				key = ht->generarKey(pass);
 				us = new Usuario(usu, to_string(key));
 
-			} while (uLista.busqueda(us) == false && ht->buscar(key) != pass);
+			} while (uLista.busqueda(us) == false && ht->buscar(std::to_string(key)) != pass);
 			
 			principal(usu, uLista, mrLista, meLista, us);
 		}
@@ -180,9 +181,9 @@ int main() {
 			}
 			else if (pass == passV && !uLista.busqueda(us)) {
 				uLista.insertar(us);
-				uLista.guardar(keys[]);
+				uLista.guardar();
 				ht->insertar(key, pass);
-				ht->guardar(uLista.cantidad());
+				ht->guardar(keys);
 			}
 
 			principal(usu, uLista, mrLista, meLista, us);

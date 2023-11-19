@@ -13,7 +13,7 @@ public:
 	void guardar();
 	void abrir();
 	int cantidad();
-	int getKeys();
+	vector<int> getKeys();
 };
 
 template<class T>
@@ -42,21 +42,10 @@ void ListaUsuario<T>::insertar(T* v) {
 
 template<class T>
 bool ListaUsuario<T>::busqueda(T* v) {
-	// Nodo<T*>* aux = inicio;
-	// bool existe = false;
-	// while (aux != NULL) {
-	// 	if (aux->valor->getUsu() == v->getUsu() && aux->valor->getKey() == v->getKey()) { 
-	// 		existe = true;
-	// 		v->setID(aux->valor->getID());
-	// 		return existe;
-	// 	}
-	// 	aux = aux->siguiente;
-	// }
-	// return existe;
 
 	//ahora con recursividad
 	if (inicio == NULL) return false;
-	else if (inicio->valor->getUsu() == v->getUsu() && inicio->valor->getKey() == v->getKey()) {
+	else if (inicio->valor->getUsu() == v->getUsu() && generarKey(inicio->valor->getPass()) == v->getKey()) {
 		v->setID(inicio->valor->getID());
 		return true;
 	}
@@ -134,7 +123,7 @@ void ListaUsuario<T>::abrir() {
 		getline(ss, c, delimit);
 		T* us = new T();
 		us->setUsu(a);
-		us->setKey(b);
+		us->setPass(b);
 		us->setID(c);
 		insertar(us);
 	}
@@ -154,16 +143,16 @@ int ListaUsuario<T>::cantidad() {
 }
 
 template<class T>
-int ListaUsuario<T>::getKeys() {
+vector<int> ListaUsuario<T>::getKeys() {
 	Nodo<T*>* aux = inicio;
 	int n=0;
-	int keys[cantidad()];
-	T* us = new T();
+	vector<int> keys(cantidad());
+	T* us = new T(); 	
 	while (aux != nullptr) {
 		us = inicio->valor;
-		keys[n] = stoi(us->getKey());
+		keys.push_back(generarKey(us->getPass()));
 		aux->siguiente;
 		n++;
 	}
-	return keys[cantidad()];
+	return keys;
 }

@@ -1,16 +1,16 @@
 using namespace std;
 
 class Usuario {
-	string usu, key, id;
+	string usu, pass, id;
 public:
-	Usuario(string usu = "", string key = "", string id = "") : usu(usu), key(key) {
+	Usuario(string usu = "", string pass = "", string id = "") : usu(usu), pass(pass) {
 		
 	}
 	string toString() {
 		ostringstream ss;
 		ss << usu;
 		ss<< ",";
-		ss << key;
+		ss << pass;
 		ss << ",";
 		ss << id;
 		return (ss.str());
@@ -22,11 +22,13 @@ public:
 
 	string getUsu() { return this->usu; }
 
-	void setKey(string key) { this->key = key; }
-
-	string getKey() { return this->key; }	
-
 	void setID(string id) { this->id = id; }
+
+	string getPass() { return this->pass; }
+
+	void setPass(string pass) { this->pass = pass; }
+
+	int getKey() { return generarKey(pass); }
 
 	string idArchivoEnviado() {
 		ostringstream ss;

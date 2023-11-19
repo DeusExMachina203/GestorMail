@@ -14,3 +14,13 @@ auto comparar = [](T a, T b) {
     if (a == b) c = true;
     return c;
 };
+
+int generarKey(string pass) {
+    int sum = 0;
+    int key;
+    for (char c : pass) { //se calcula la suma de los c�digos ascii de cada caracter en la contrasena
+        sum += static_cast<int>(c);
+    }
+    key = ((sum * 17) / 5) % 500;
+    return key;
+}

@@ -7,6 +7,7 @@ public:
 		this->key = key;
 		this->value = value;
 	}
+	Hash* siguiente = nullptr;
 	int getKey() { return key; }
 	string getValue() { return value; }
 };
