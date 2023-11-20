@@ -10,11 +10,12 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			menuPrincipal();
 			centrar("Ingresar opcion: "); cin >> op2;
 		} while (op2 < 1 || op2>5);
-		string asunto, texto, nombreRemitente;
+		string asunto, texto, nombreRemitente, nom;
 		Mail* mensaje;
 		Usuario* remitente;
 		stringstream nombreRemitenteStream(nombreRemitente);
 		vector<Mail*> mostrador;
+		int agre;
 		contactos->abrir(usu);
 		switch (op2) {
 		case 1:
@@ -118,8 +119,6 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			break;
 		case 4:
 			system("cls");
-			int agre=0;
-			string nom;
 			do {
 				contactos->inOrden();
 				centrarTexto("Desea agregar un nuevo contacto?");
@@ -161,12 +160,12 @@ int main() {
 		ListaEnviados<Mail>* meLista = new ListaEnviados<Mail>();
 		int op1;
 		logo();
+		string usu, pass, passV;
+		Usuario* us;
 		cin >> op1;
 		switch(op1) {
 		case 1:
-			string usu, pass;
 			int key;
-			Usuario* us;
 			do {
 				system("cls");
 				
@@ -185,7 +184,6 @@ int main() {
 			break;
 		case 2:
 			system("cls");
-			string usu, pass, passV;
 
 			cout << endl;
 			centrarTexto("Recuerde no dejar ningun espacio!");
@@ -193,7 +191,7 @@ int main() {
 			centrar("Ingrese su contrasena: "); cin >> pass; cout << endl;
 			centrar("Verifique su contrasena: "); cin >> passV; cout << endl;
 			int key = ht->generarKey(pass);
-			Usuario* us = new Usuario(usu, to_string(key));
+			us = new Usuario(usu, to_string(key));
 
 			if (uLista.busqueda(us) == true) {
 				cout << endl;
@@ -231,7 +229,7 @@ int main() {
 				if (numAzarUs == numAzarRem) numAzarRem = rand() % (numDatos + 1);
 				mensaje = new Mail(generarAsunto(), generarTexto(), uLista.usuarioAlAzar(numAzarUs), uLista.usuarioAlAzar(numAzarRem));
 				meLista->push(mensaje);
-				mensaje->Enviar(uLista.busquedaId(numAzarRem));
+				mensaje->Enviar(uLista.busquedaId(uLista.usuarioAlAzar(numAzarRem)));
 			}
 		}
 		system("cls");

@@ -1,12 +1,12 @@
 template<class T>
-class Nodo {
+class NodoAVL {
 public:
 	T elemento;
-	Nodo* izq;
-	Nodo* der;
+	NodoAVL* izq;
+	NodoAVL *der;
 	int altura;
 
-	Nodo() {
+	NodoAVL () {
 		izq = nullptr;
 		der = nullptr;
 		altura = 0;

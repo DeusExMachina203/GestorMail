@@ -1,30 +1,30 @@
 template<class T>
 class ListaContactos {
 private:
-	Nodo<T>* raiz;
+	NodoAVL<T>* raiz;
 	void(*procesar)(T);
 
-	int _altura(Nodo<T>* nodo) {
+	int _altura(NodoAVL<T>* nodo) {
 		if (nodo == nullptr) return 0;
 		return nodo->altura;
 	}
 
-	void _rotarDerecha(Nodo<T>*& nodo) {
-		Nodo<T>* p = nodo->izq;
+	void _rotarDerecha(NodoAVL<T>*& nodo) {
+		NodoAVL<T>* p = nodo->izq;
 		nodo->izq = p->der;
 		p->der = nodo;
 
 		nodo = p;
 	}
 
-	void _rotarIzquierda(Nodo<T>*& nodo) {
-		Nodo<T>* p = nodo->der;
+	void _rotarIzquierda(NodoAVL<T>*& nodo) {
+		NodoAVL<T>* p = nodo->der;
 		nodo->der = p->izq;
 		p->izq = nodo;
 
 		nodo = p;
 	}
-	void _balanceo(Nodo<T>*& nodo) {
+	void _balanceo(NodoAVL<T>*& nodo) {
 		int hizq = _altura(nodo->izq);
 		int hder = _altura(nodo->der);
 		int fb = hder - hizq;
@@ -50,11 +50,11 @@ private:
 		nodo->altura = 1 + ((hizq > hder) ? hizq : hder);
 	}
 
-	bool _insertar(Nodo<T>*& nodo, T e) {
+	bool _insertar(NodoAVL<T>*& nodo, T e) {
 
 		if (nodo == nullptr) {
 			
-			nodo = new Nodo<T>();
+			nodo = new NodoAVL<T>();
 			nodo->elemento = e;
 			return true;
 		}
@@ -70,21 +70,21 @@ private:
 		return true;
 	}
 
-	void _inOrden(Nodo<T>* nodo) {
+	void _inOrden(NodoAVL<T>* nodo) {
 		if (nodo == nullptr) return;
 		_inOrden(nodo->izq);
 		procesar(nodo->elemento);
 		_inOrden(nodo->der);
 	}
 
-	void _inOrdenH(Nodo<T>* nodo) {
+	void _inOrdenH(NodoAVL<T>* nodo) {
 		if (nodo == nullptr) return;
 		_inOrdenH(nodo->izq);
 		procesar(nodo->altura);
 		_inOrdenH(nodo->der);
 	}
 
-	void _guardar(Nodo<T>* nodo, ofstream archivo) {
+	void _guardar(NodoAVL<T>* nodo, ofstream archivo) {
 		if (nodo == nullptr) return;
 		_guardar(nodo->izq, archivo);
 		archivo << nodo->elemento << endl;
