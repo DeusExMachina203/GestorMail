@@ -14,3 +14,7 @@ auto comparar = [](T a, T b) {
     if (a == b) c = true;
     return c;
 };
+
+void imprimir(string e) {
+    cout << " " << e << endl << endl;
+}

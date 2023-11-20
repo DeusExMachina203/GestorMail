@@ -21,3 +21,5 @@ using namespace std;
 #include "Hash.h"
 #include "HashTable.h"
 #include "DataSet.h"
+#include "NodoAVL.h"
+#include "ListaContactos.h"

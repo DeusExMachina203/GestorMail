@@ -59,7 +59,8 @@ void menuPrincipal() {
 	centrarTexto("1. Revisar Correos");
 	centrarTexto("2. Enviar un Correo");
 	centrarTexto("3. Ver Correos Enviados");
-	centrarTexto("4. Cerrar Sesion");
+	centrarTexto("4. Ver contactos");
+	centrarTexto("5. Cerrar Sesion");
 }
 
 void menuOrd() {

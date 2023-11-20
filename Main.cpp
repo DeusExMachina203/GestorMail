@@ -2,19 +2,20 @@
 
 using namespace std;
 
-void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* &mrLista, ListaEnviados<Mail>* &meLista, Usuario* &usX) {
+void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* &mrLista, ListaEnviados<Mail>* &meLista, Usuario* &usX, ListaContactos<string>* contactos) {
 	int op2;
 	while (1) {
 		do {
 			system("cls");
 			menuPrincipal();
 			centrar("Ingresar opcion: "); cin >> op2;
-		} while (op2 < 1 || op2>4);
+		} while (op2 < 1 || op2>5);
 		string asunto, texto, nombreRemitente;
 		Mail* mensaje;
 		Usuario* remitente;
 		stringstream nombreRemitenteStream(nombreRemitente);
 		vector<Mail*> mostrador;
+		contactos->abrir(usu);
 		switch (op2) {
 		case 1:
 			system("cls");
@@ -116,6 +117,28 @@ void principal(string usu, ListaUsuario<Usuario> &uLista, ListaRecibidos<Mail>* 
 			cin.get();
 			break;
 		case 4:
+			system("cls");
+			int agre=0;
+			string nom;
+			do {
+				contactos->inOrden();
+				centrarTexto("Desea agregar un nuevo contacto?");
+				centrarTexto("Presionar NO:0  SI:1");
+				centrar(""); cin >> agre;
+				cout << endl;
+			} while (agre > 1 || agre < 0);
+			if (agre == 1) {
+				centrarTexto("Ingrese el nombre del contacto que desea agregar:");
+				centrar(""); cin >> nom;
+				if (uLista.busquedaId(new Usuario(nom)) == "") {
+					centrarTexto("El usuario al que desea agregar no existe");
+					break;
+				}
+				contactos->Insertar(nom);
+				contactos->guardar(usu);
+			}
+			break;
+		case 5:
 			return;
 		}
 	}
@@ -133,6 +156,7 @@ int main() {
 		int keys[uLista.cantidad()] = uLista.getKeys();
 		ht->abrir();
 
+		ListaContactos<string>* contactos = new ListaContactos<string>(imprimir);
 		ListaRecibidos<Mail>* mrLista = new ListaRecibidos<Mail>();
 		ListaEnviados<Mail>* meLista = new ListaEnviados<Mail>();
 		int op1;
@@ -157,7 +181,7 @@ int main() {
 
 			} while (uLista.busqueda(us) == false && ht->buscar(key) != pass);
 			
-			principal(usu, uLista, mrLista, meLista, us);
+			principal(usu, uLista, mrLista, meLista, us, contactos);
 			break;
 		case 2:
 			system("cls");
@@ -186,7 +210,7 @@ int main() {
 				ht->guardar(uLista.cantidad());
 			}
 
-			principal(usu, uLista, mrLista, meLista, us);
+			principal(usu, uLista, mrLista, meLista, us, contactos);
 			break;
 		case 3:
 			const int numDatos = 500;
